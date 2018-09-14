@@ -1,0 +1,598 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>KaggleBreak</title>
+<link href="{% static 'images/favicon_k.ico' %}" rel="icon">
+
+<!--Plugins css-->
+<link rel="stylesheet" href="{% static 'css/plugins.css' %}">
+
+<!--Custom Styles-->
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link href="https://fonts.googleapis.com/css?family=Do+Hyeon:100,200,400,300,500,600,700" rel="stylesheet">
+
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="90">
+
+<!--PreLoader-->
+<div class="loader">
+   <div class="loader-inner">
+      <div class="loader-blocks">
+         <span class="block-1"></span>
+         <span class="block-2"></span>
+         <span class="block-3"></span>
+         <span class="block-4"></span>
+         <span class="block-5"></span>
+         <span class="block-6"></span>
+         <span class="block-7"></span>
+         <span class="block-8"></span>
+         <span class="block-9"></span>
+         <span class="block-10"></span>
+         <span class="block-11"></span>
+         <span class="block-12"></span>
+         <span class="block-13"></span>
+         <span class="block-14"></span>
+         <span class="block-15"></span>
+         <span class="block-16"></span>
+      </div>
+   </div>
+</div>
+<!--PreLoader Ends-->
+
+<!-- header -->
+<header class="site-header">
+   <nav class="navbar navbar-expand-lg transparent-bg static-nav">
+      <div class="container">
+         <a class="navbar-brand" href="#">
+         <img src="{% static 'images/logo_kagglebreak.png' %}" alt="logo">
+         </a>
+         <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse"
+                 data-target="#xenav">
+            <span> </span>
+            <span> </span>
+            <span> </span>
+         </button>
+         <div class="collapse navbar-collapse" id="xenav">
+            <ul class="navbar-nav ml-auto">
+               <li class="nav-item active">
+                  <a class="nav-link" href="#about">About</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="#people">People</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="#study">Study</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="#events">Event</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="#supporters">Supporter</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="#contactus">contact</a>
+               </li>
+            </ul>
+         </div>
+         
+         <!--Social Icons-->
+         <ul class="social-icons white d-md-none">
+            <li><a target="_blank" href="{{ rep_contact.facebook }}"><i class="fa fa-facebook"></i> </a> </li>
+            <li><a target="_blank" href="mailto:{{ rep_contact.email }}"><i class="fa fa-envelope-o"></i> </a> </li>
+         </ul>
+      </div>
+
+      <!--side menu open button-->
+      <a href="javascript:void(0)" class="d-none d-lg-inline-block sidemenu_btn" id="sidemenu_toggle">
+          <span></span> <span></span> <span></span>
+       </a>
+   </nav>
+
+   <!-- side menu -->
+   <div class="side-menu">
+      <div class="inner-wrapper">
+         <span class="btn-close" id="btn_sideNavClose"><i></i><i></i></span>
+         <nav class="side-nav">
+            <ul class="navbar-nav w-100">
+               <li class="nav-item active">
+                  <a class="nav-link" href="#about">About</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="#people">People</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="#study">Study</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="#events">Event</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="#supporters">Supporter</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="#contactus">Contact</a>
+               </li>
+            </ul>
+         </nav>
+
+         <div class="side-footer w-100">
+            <ul class="social-icons-simple white top40">
+            <li><a target="_blank" href="{{ rep_contact.facebook }}"><i class="fa fa-facebook"></i> </a> </li>
+            <li><a target="_blank" href="mailto:{{ rep_contact.email }}"><i class="fa fa-envelope-o"></i> </a> </li>
+         </ul>
+         <script type="text/javascript">
+           var date=new Date(),
+             year = date.getFullYear(),
+             text = "&copy; " + year + " KaggleBreak. Made by Lynn Hong",
+             html = '<p class="whitecolor">' + text + '</p>';
+           document.write(html);
+         </script>
+
+         </div>
+      </div>
+   </div>
+   <a id="close_side_menu" href="javascript:void(0);"></a>
+   <!-- End side menu -->
+</header>
+<!-- header -->
+
+<!--Main Slider-->
+<div class="rotating-slider studio-ver padding_top full-screen center-block" id="home">
+   <div class="container">
+      <div class="row padding_half">
+         <div class="col-md-12">
+            <div id="text-fading" class="owl-carousel text-center">
+               {% for home in homes %}
+               <div class="item bottom30">
+                  <h2 class="text-capitalize font-xlight whitecolor">
+                     <span class="d-block">{{ home.top }}</span>
+                     <span class="d-block fontbold">{{ home.middle }}</span>
+                     <span class="d-block font-xlight">{{ home.bottom }}</span>
+                  </h2>
+                  <a class="button btnsecondary top40" target="_blank" href="{{ home.button_url }}">
+                     {{ home.button_title }}</a>
+               </div>
+               {% endfor %}
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<!--Main Slider ends -->
+  
+<!--About -->
+<section id="about" class="padding single-feature bglight">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-6 col-sm-7 text-md-left text-center wow fadeInLeft" data-wow-delay="150ms">
+            <div class="heading-title heading_space">
+               <span style="font-family: 'Do Hyeon';">{{ about.sub_title }}</span>
+               <h2 class="darkcolor bottom30">{{ about.title }}</h2>
+            </div>
+            <p class="bottom35">{{ about.content }}</p>
+            <a target="_blank" href={{ rep_contact.facebook }}
+               class="button btnsecondary pagescroll">Our Facebook</a>
+         </div>
+         <div class="col-md-6 col-sm-5 wow fadeInRight" data-wow-delay="200ms">
+            <div class="image top50"><img alt="SEO" src="{% static 'images/kagglebreak/study.jpg' %}"></div>
+         </div>
+      </div>
+   </div>
+</section>
+
+<!-- What we aim -->
+<section id="aim" class="padding">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12 col-sm-12 text-center wow fadeInUp" data-wow-delay="150ms">
+            <div class="heading-title">
+               <span>우리는 이런 것들을 지향합니다</span>
+               <h2 class="darkcolor heading_space">Code of Conduct</h2>
+            </div>
+         </div>
+      </div>
+      <div class="row" id="app-feature">
+         <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="content-left clearfix">
+            {% for coc_left in coc_lefts %}
+               <div class="feature-item left top30 bottom30 wow fadeInUp" data-wow-delay="150ms">
+                  <span class="icon"><i class="fa {{ coc_left.icon }}"></i></span>
+                  <div class="text">
+                     <h4>{{ coc_left.title }}</h4>
+                     <p>{{ coc_left.content }}</p>
+                  </div>
+               </div>
+            {% endfor %}
+            </div>
+         </div>
+
+         <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="image feature-item text-center wow fadeIn" data-wow-delay="350ms">
+               <img src="{% static 'images/kagglebreak/study2_vertical.jpg' %}" alt="">
+            </div>
+         </div>
+
+         <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="content-right clearfix">
+            {% for coc_right in coc_rights %}
+               <div class="feature-item right top30 bottom30 wow fadeInUp" data-wow-delay="150ms">
+                  <span class="icon"><i class="fa {{ coc_right.icon }}"></i></span>
+                  <div class="text">
+                     <h4>{{ coc_right.title }}</h4>
+                     <p>{{ coc_right.content }}</p>
+                  </div>
+               </div>
+            {% endfor %}
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!--About ends-->
+
+<!-- Our People-->
+<section id="people" class="padding bglight">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-8 offset-md-2 col-sm-12 text-center">
+            <div class="heading-title wow fadeInUp" data-wow-delay="150ms">
+               <span>캐글뽀개기를 움직이는 사람들</span>
+               <h2 class="darkcolor bottom20">운영진 소개</h2>
+               <p class="bottom10">캐글과 데이터 분석에 대한 관심으로 모인 사람들. 여러분도 함께하실 수 있어요!</p>
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         {% for manager in managers %}
+         <div class="col-lg-3 col-md-6">
+            <div class="team-box no-hover top60 wow fadeInUp" data-wow-delay="200ms">
+               <div class="image">
+                  <img src="{{ manager.picture }}" alt="">
+               </div>
+               <div class="team-content gradient_bg">
+                  <h3>{{ manager.name }}({{ manager.nickname_eng }})</h3>
+                  <p>{{ manager.interest }}</p>
+                  <ul class="social-icons">
+                     {% for c in manager.contacts %}
+                        {% if c.contact_type == 'email' %}
+                           <li><a target='_blank' href=mailto:{{ c.url }}>
+                               <i class="fa fa-envelope-o }}"></i></a></li>
+                        {% else %}
+                           <li><a target='_blank' href={{ c.url }}>
+                               <i class="fa fa-{{ c.contact_type }}"></i></a></li>
+                        {% endif %}
+                     {% endfor %}
+                  </ul>
+               </div>
+            </div>
+         </div>
+         {% endfor %}
+      </div>
+   </div>
+</section>
+<!-- Our Team ends-->
+
+<!-- How to join study group -->
+<section id="study" class="padding gradient_bg_default">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12 col-sm-12 text-center">
+            <div class="heading-title wow fadeInUp" data-wow-delay="150ms">
+               <h2 class="whitecolor">Study <span class="fontregular">Process</span> </h2>
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         <ul class="process-wrapp">
+            <li class="whitecolor wow fadeIn" data-wow-delay="150ms">
+               <span class="pro-step bottom20">01</span>
+               <p class="fontbold bottom25">Concept</p>
+               <p>Quisque tellus risus, adipisci viverra bibendum urna.</p>
+            </li>
+            <li class="whitecolor wow fadeIn" data-wow-delay="250ms">
+               <span class="pro-step bottom20">02</span>
+               <p class="fontbold bottom25">Plan</p>
+               <p>Quisque tellus risus, adipisci viverra bibendum urna.</p>
+            </li>
+            <li class="whitecolor wow fadeIn" data-wow-delay="350ms">
+               <span class="pro-step bottom20">03</span>
+               <p class="fontbold bottom25">Design</p>
+               <p>Quisque tellus risus, adipisci viverra bibendum urna.</p>
+            </li>
+            <li class="whitecolor wow fadeIn" data-wow-delay="600ms">
+               <span class="pro-step bottom20">04</span>
+               <p class="fontbold bottom25">Development</p>
+               <p>Quisque tellus risus, adipisci viverra bibendum urna.</p>
+            </li>
+            <li class="whitecolor wow fadeIn" data-wow-delay="700ms">
+               <span class="pro-step bottom20">05</span>
+               <p class="fontbold bottom25">Quality Check</p>
+               <p>Quisque tellus risus, adipisci viverra bibendum urna.</p>
+            </li>
+         </ul>
+      </div>
+   </div>
+</section>
+<!--study Process ends-->
+
+<!--events section-->
+<section id="events" class="half-section">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-md-6 nopadding">
+            <div class="image hover-effect img-container">
+               <img alt="" src="{% static 'images/split-img1.jpg' %}" class="equalheight">
+            </div>
+         </div>
+         <div class="col-md-6 nopadding">
+            <div class="split-box text-center center-block container-padding equalheight">
+               <div class="heading-title padding">
+               <span style="font-family: 'Do Hyeon'">캐글러와 데이터 과학자의 놀이터</span>
+               <h2 class="darkcolor bottom20 wow fadeIn" data-wow-delay="150ms">
+                   DataBreak 2018: Hello Kaggler!</h2>
+               <p class="heading_space wow fadeIn" data-wow-delay="250ms">
+                   데이터 과학을 쉽게 입문할 수 있는 캐글을 알리고,
+                   데이터 과학에 관심있는 다양한 사람들과 만나 서로의 지식 경험을 공유하는 자리</p>
+               <a target="_blank" href="{% url 'databreak2018' %}"
+                  class="button btnprimary wow fadeInUp" data-wow-delay="300ms">
+                   Go event page</a>
+            </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!--events section ends-->
+
+<!-- Counters -->  
+<section id="funfacts" class="padding_top fact-iconic gradient_bg">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-5 col-sm-12 margin_bottom whitecolor text-md-left text-center wow fadeInUp" data-wow-delay="150ms">
+            <h3 class="bottom25">Our many years of experience in numbers</h3>
+            <p class="title">We show you our professional achievements in numbers, which show the acquired skills and trust of many clients.</p>
+         </div>
+         <div class="col-md-7 col-sm-12 text-center">
+            <div class="row">
+               <div class="col-md-4 col-sm-4 icon-counters whitecolor margin_bottom  wow fadeIn" data-wow-delay="200ms">
+                  <div class="img-icon bottom15">
+                     <i class="fa fa-smile-o"></i>
+                  </div>
+                  <div class="counters">
+                     <span class="count_nums" data-to="3088" data-speed="3088"> </span> <i class="fa fa-plus"></i>
+                  </div>
+                  <p class="title">캐글뽀개기 멤버 수</p>
+               </div>
+               <div class="col-md-4 col-sm-4 icon-counters whitecolor margin_bottom wow fadeIn" data-wow-delay="250ms">
+                  <div class="img-icon bottom15">
+                     <i class="fa fa-language"> </i>
+                  </div>
+                  <div class="counters">
+                     <span class="count_nums" data-to="9500" data-speed="2500"> </span> <i class="fa fa-plus"></i>
+                  </div>
+                  <p class="title">Completed consultations</p>
+               </div>
+               <div class="col-md-4 col-sm-4 icon-counters whitecolor margin_bottom wow fadeIn" data-wow-delay="300ms">
+                  <div class="img-icon bottom15">
+                     <i class="fa fa-desktop"></i>
+                  </div>
+                  <div class="counters">
+                     <span class="count_nums" data-to="6000" data-speed="2500"> </span> <i class="fa fa-plus"></i>
+                  </div>
+                  <p class="title">Carried out training</p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!--Counters ends-->
+
+<!-- Supporters -->
+<section id="supporters" class="padding">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12 col-sm-12 text-center">
+            <div class="heading-title bottom30 wow fadeInUp" data-wow-delay="150ms">
+               <span>활동에 도움을 주시는 분들</span>
+               <h2 class="darkcolor">Sponsors</h2>
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-md-12 col-sm-12">
+            <div id="testimonial-slider" class="owl-carousel">
+               {% for sponsor in sponsors %}
+               <div class="item">
+                  <div class="testimonial-wrapp">
+                     <span class="quoted"><i class="fa fa-quote-right"></i></span>
+                     <div class="testimonial-text">
+                        <p class="bottom40">{{ sponsor.introduction }}</p>
+                     </div>
+                     <div class="testimonial-photo">
+                         {% with sponsor.picture as image_static %}
+                         <img alt="" src="{% static image_static %}"></div>
+                         {% endwith %}
+                     <h4 class="darkcolor">{{ sponsor.name }}</h4>
+                     <small class="defaultcolor">{{ sponsor.interest }}</small>
+                  </div>
+               </div>
+               {% endfor %}
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!--supporters Ends-->
+
+<!-- Partners -->  
+<section id="logos" class="padding_bottom">
+   <div class="container">
+     <h3 class="invisible">hidden</h3>
+      <div class="row">
+         <div class="col-md-12 col-sm-12">
+            <div id="partners-slider" class="owl-carousel">
+               <div class="item">
+                  <div class="logo-item"> <img alt="" src="{% static 'images/logo-1.png' %}"></div>
+               </div>
+               <div class="item">
+                  <div class="logo-item"><img alt="" src="{% static 'images/logo-2.png' %}"></div>
+               </div>
+               <div class="item">
+                  <div class="logo-item"><img alt="" src="{% static 'images/logo-3.png' %}"></div>
+               </div>
+               <div class="item">
+                  <div class="logo-item"><img alt="" src="{% static 'images/logo-4.png' %}"></div>
+               </div>
+               <div class="item">
+                  <div class="logo-item"><img alt="" src="{% static 'images/logo-5.png' %}"></div>
+               </div>
+               <div class="item">
+                  <div class="logo-item"><img alt="" src="{% static 'images/logo-1.png' %}"></div>
+               </div>
+               <div class="item">
+                  <div class="logo-item"><img alt="" src="{% static 'images/logo-2.png' %}"></div>
+               </div>
+               <div class="item">
+                  <div class="logo-item"><img alt="" src="{% static 'images/logo-3.png' %}"></div>
+               </div>
+               <div class="item">
+                  <div class="logo-item"><img alt="" src="{% static 'images/logo-4.png' %}"></div>
+               </div>
+               <div class="item">
+                  <div class="logo-item"><img alt="" src="{% static 'images/logo-5.png' %}"></div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!--Partners Ends-->
+
+<!-- Contact US -->  
+<section id="contactus" class="padding_top bglight">
+   <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-sm-6">
+           <div class="heading-title heading_space wow fadeInUp" data-wow-delay="150ms">
+               <span>Lets Get In Touch</span>
+               <h2 class="darkcolor">Contact KaggleBreak</h2>
+            </div>
+        </div>
+         <div class="col-md-6 col-sm-12 margin_bottom wow fadeInUp" data-wow-delay="200ms">
+            <p>If you have any inquiries, please contact us :)</p>
+            <div class="row">
+               <div class="col-md-6 col-sm-6 our-address top40">
+                  <h5 class="bottom25">Our Facebook</h5>
+                  <p class="bottom15" style="word-wrap: break-word">{{ rep_contact.facebook }}</p>
+                  <a class="pickus" target="_blank" href="{{ rep_contact.facebook }}" data-text="Go to facebook">
+                     Go to Facebook
+                  </a>
+               </div>
+               <div class="col-md-6 col-sm-6 our-address top40">
+                  <h5 class="bottom25">Our Email</h5>
+                  <p class="bottom15">Main Email : {{ rep_contact.email }} <span class="block">Inquiries : email@website.com</span> </p>
+                  <a class="pickus" href="mailto:{{ rep_contact.email }}" data-text="Send a Message">Send a Message</a>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   
+<!--Location Map here-->
+<!--<div id="map-container"></div>  -->
+</section>
+<!--Contact US Ends-->                    
+      
+<!--Site Footer Here-->
+<footer id="site-footer" class="padding_half">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12 col-sm-12 text-center">
+            <ul class="social-icons bottom25 wow fadeInUp" data-wow-delay="150ms">
+               <li><a target="_blank" href={{ rep_contact.facebook }}>
+                  <i class="fa fa-facebook"></i>
+               </a></li>
+               <li><a target="_blank" href="javascript:void(0)"><i class="fa fa-instagram"></i> </a> </li>
+               <li><a target="_blank" href="mailto:{{ rep_contact.email }}"><i class="fa fa-envelope-o"></i> </a> </li>
+            </ul>
+            <script type="text/javascript">
+            var date=new Date(),
+              year = date.getFullYear(),
+              text = "All Rights Reserved. &copy; " + year + " KaggleBreak. Made by Lynn Hong",
+              html = '<p class="copyrights wow fadeInUp" data-wow-delay="200ms">' + text + '</p>';
+            document.write(html);
+            </script>
+         </div>
+      </div>
+   </div>
+</footer>
+<!--Footer ends-->   
+
+
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+
+<!--Bootstrap Core-->
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+<!--to view items on reach-->
+<script src="{% static 'js/jquery.appear.js' %}"></script>
+
+<!--Equal-Heights-->
+<script src="{% static 'js/jquery.matchHeight-min.js' %}"></script>
+
+<!--Owl Slider-->
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+
+<!--number counters-->
+<script src="{% static 'js/jquery-countTo.js' %}"></script>
+ 
+<!--Parallax Background-->
+<script src="{% static 'js/parallaxie.js' %}"></script>
+  
+<!--Cubefolio Gallery-->
+<script src="{% static 'js/jquery.cubeportfolio.min.js' %}"></script>
+
+<!--FancyBox popup-->
+<script src="{% static 'js/jquery.fancybox.min.js' %}"></script>
+
+<!-- Video Background-->
+<script src="{% static 'js/jquery.background-video.js' %}"></script>
+
+<!--TypeWriter-->
+<script src="{% static 'js/typewriter.js' %}"></script>
+      
+<!--Particles-->
+<script src="{% static 'js/particles.min.js' %}"></script>
+        
+<!--WOw animations-->
+<script src="{% static 'js/wow.min.js' %}"></script>
+            
+<!--Revolution SLider-->
+<script src="{% static 'js/revolution/jquery.themepunch.tools.min.js' %}"></script>
+<script src="{% static 'js/revolution/jquery.themepunch.revolution.min.js' %}"></script>
+<!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
+<script src="{% static 'js/revolution/extensions/revolution.extension.actions.min.js' %}"></script>
+<script src="{% static 'js/revolution/extensions/revolution.extension.carousel.min.js' %}"></script>
+<script src="{% static 'js/revolution/extensions/revolution.extension.kenburn.min.js' %}"></script>
+<script src="{% static 'js/revolution/extensions/revolution.extension.layeranimation.min.js' %}"></script>
+<script src="{% static 'js/revolution/extensions/revolution.extension.migration.min.js' %}"></script>
+<script src="{% static 'js/revolution/extensions/revolution.extension.navigation.min.js' %}"></script>
+<script src="{% static 'js/revolution/extensions/revolution.extension.parallax.min.js' %}"></script>
+<script src="{% static 'js/revolution/extensions/revolution.extension.slideanims.min.js' %}"></script>
+<script src="{% static 'js/revolution/extensions/revolution.extension.video.min.js' %}"></script>
+
+<!--Google Map API-->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_egfOLjahHB0IWpykRZrVFD8fN4JMgmw"></script>
+<script src="{% static 'js/functions.js' %}"></script>
+
+
+</body>
+</html>

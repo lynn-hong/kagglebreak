@@ -1,0 +1,439 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+	<html lang="ko" class="no-js">
+	<head>
+		<!-- Mobile Specific Meta -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Favicon-->
+		<link rel="shortcut icon" href="{% static 'databreak2018/img/fav.png' %}">
+		<!-- Author Meta -->
+		<meta name="author" content="codepixer">
+		<!-- Meta Description -->
+		<meta name="description" content="">
+		<!-- Meta Keyword -->
+		<meta name="keywords" content="">
+		<!-- meta character set -->
+		<meta charset="UTF-8">
+		<!-- Site Title -->
+		<title>DataBreak2018: Hello Kaggler!</title>
+
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:100,200,400,300,500,600,700" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono:100,200,400,300,500,600,700" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding:100,200,400,300,500,600,700" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Do+Hyeon:100,200,400,300,500,600,700" rel="stylesheet">
+			<!--
+			CSS
+			============================================= -->
+		<!-- DevExtreme themes -->
+			<link rel="stylesheet" href="{% static 'databreak2018/css/dx.common.css' %}">
+			<link rel="stylesheet" href="{% static 'databreak2018/css/dx.light.css' %}">
+
+			<link rel="stylesheet" href="{% static 'databreak2018/css/linearicons.css' %}">
+			<link rel="stylesheet" href="{% static 'databreak2018/css/font-awesome.min.css' %}">
+			<link rel="stylesheet" href="{% static 'databreak2018/css/bootstrap.css' %}">
+			<link rel="stylesheet" href="{% static 'databreak2018/css/magnific-popup.css' %}">
+			<link rel="stylesheet" href="{% static 'databreak2018/css/nice-select.css' %}">					
+			<link rel="stylesheet" href="{% static 'databreak2018/css/animate.min.css' %}">
+			<link rel="stylesheet" href="{% static 'databreak2018/css/owl.carousel.css' %}">
+			<link rel="stylesheet" href="{% static 'databreak2018/css/main.css' %}">
+			<link rel="stylesheet" href="{% static 'databreak2018/css/scheduler.css' %}">
+
+		</head>
+		<body>
+
+			  <header id="header" id="home">
+			    <div class="container">
+			    	<div class="row align-items-center justify-content-between d-flex">
+				      <div id="logo">
+				        <a href="#home"><img src="{% static 'databreak2018/img/logo.png' %}" alt="" title="" /></a>
+				      </div>
+				      <nav id="nav-menu-container">
+				        <ul class="nav-menu">
+				          <li class="menu-active"><a href="#home">Home</a></li>
+				          <li class="menu-active"><a href="#about">About</a></li>
+				          <li><a href="#speakers">Speakers</a></li>
+				          <li><a href="#schedule">Schedule</a></li>
+				          <li class="menu-has-children"><a href="">Competition</a>
+				            <ul>
+				              <li><a href="generic.html">Data quiz</a></li>
+				              <li><a href="elements.html">Visualization</a></li>
+				            </ul>
+				          </li>
+				          <li><a href="#supporters">Supporters</a></li>
+				          <li><a class="ticker-btn" href="#">Register</a></li>
+				        </ul>
+				      </nav><!-- #nav-menu-container -->		    		
+			    	</div>
+			    </div>
+			  </header><!-- #header -->
+
+
+			<!-- start banner Area -->
+			<section class="banner-area relative" id="home">	
+				<div class="overlay overlay-bg"></div>
+				<div class="container">
+					<div class="row fullscreen d-flex align-items-center justify-content-center">
+						<div class="banner-content col-lg-9 col-md-12">
+							<h6>캐글러와 데이터 과학자의 놀이터</h6>
+							<h1 class="text-white">
+								DataBreak 2018:
+								<span style="font-family: 'Share Tech Mono'; display: block;">Hello Kaggler!</span>
+							</h1>
+							<div class="countdown">
+								<div id="timer" class="text-white"></div>
+							</div>
+							<h4><span class="lnr lnr-calendar-full"></span>2018. 10. 7(Sun) 10~18 PM</h4>
+							<h4><span class="lnr lnr-map"></span>마이크로소프트 광화문오피스</h4>
+						</div>											
+					</div>
+				</div>
+			</section>
+			<!-- End banner Area -->				
+	
+			<!-- Start about Area -->
+			<section class="home-video-area" id="about">
+				<div class="container-fluid">
+					<div class="row justify-content-end align-items-center">
+						<div class="col-lg-4 no-padding about-right">
+							<p class="top-title">무슨 행사인가요?</p>
+							<h1>DataBreak 2018</h1>
+							<p><span>Data science를 쉽게 뽀개기 위한 오프라인 워크샵</span></p>
+							<p>
+								DataBreak(데이터뽀개기)는 오프라인에서 국내 캐글러, 분석 실무자 등
+								데이터 분석에 관심있는 다양한 분야의 사람들 간 네트워킹할 수 있는 분석 워크샵입니다.
+								처음 라면을 끓이는 사람처럼 데이터 과학을 쉽게 입문(뽀갤 수) 할 수 있는 방법을 공유하고자 합니다.
+							</p>
+						</div>
+						<section class="video-area col-lg-6 no-padding">
+							<div class="overlay overlay-bg"></div>
+							<div class="containers">
+								<div class="video-content">
+									<img class="img-fluid" src="{% static 'databreak2018/img/about/kaggle_computer.png' %}" alt="">
+								</div>
+							</div>
+						</section>											
+					</div>
+				</div>	
+			</section>
+			<!-- End home-aboutus Area -->
+
+
+			<!-- Start home-aboutus Area -->
+			<section class="home-aboutus-area">
+				<div class="container-fluid">
+					<div class="row align-items-center">
+						<div class="col-lg-7 no-padding about-left">
+							<img class="img-fluid"
+                                 src="{% static 'databreak2018/img/about/kaggle_package.png' %}" alt="">
+						</div>
+						<div class="col-lg-4 no-padding about-right">
+							<p class="top-title">2018년의 주제가 무엇인가요?</p>
+							<h1 class="text-white">Hello Kaggler!</h1>
+							<p><span>데이터 과학의 놀이터인 캐글을 알리고, 데이터 분석으로 가치를 낼 수 있는 인사이트를 이야기하는 자리</span></p>
+							<p>
+								데이터뽀개기 2018년 행사 컨셉은 "Hello Kaggler!",
+								국내 캐글러가 모여서 캐글 경험기, 머신러닝, 탐색적 데이터 분석, 분석 자동화, 시각화 및 대시보드 등의 주제에서
+								데이터 분석으로 가치를 낼 수 있는 인사이트를 이야기하는 자리입니다.
+							</p>
+							<p>
+								"Hello World!"와 같이 가장 간단한 표현처럼
+								비전공자 또는 분석에 관심있는 학생/개발자들이 데이터 과학의 놀이터인 캐글 플랫폼을 통해
+								데이터 분석에 관심을 갖고 입문하길 바라는 마음입니다.
+								'데이터뽀개기 2018'을 시작으로 매년 캐글뽀개기(KaggleBreak)와 함께 데이터를 뽀내 나가면 좋겠습니다.
+							</p>
+						</div>
+					</div>
+				</div>	
+			</section>
+			<!-- End home-aboutus Area -->
+
+			<!-- Start video-sec Area -->
+			<section class="video-sec-area section-gap" id="videos">
+				<div class="container">
+					<div class="row justify-content-center align-items-center ">
+						<div class="col-lg-6 video-left">
+							<h6>Brand new app to blow your mind</h6>
+							<h1>We’ve made a life <br>
+							that will change you</h1>
+							<p><span>We are here to listen from you deliver exellence</span></p>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temp or incididunt ut labore et dolore magna aliqua. Ut enim ad minim.
+							</p>
+							<a class="primary-btn" href="#">Get Started now</a>
+						</div>
+						<div class="col-lg-6">
+							<div class="active-video-carusel">
+									<div class="item video-right justify-content-center align-items-center d-flex" style="background:url({% static 'img/video-bg.jpg' %}) no-repeat center;background-size: cover;">
+									<div class="overlay overlay-bg"></div>
+									<a class="play-btn" href="https://www.youtube.com/watch?v=ARA0AxrnHdM"><img class="img-fluid" src="{% static 'databreak2018/img/play-icon.png' %}" alt=""></a>
+									</div>
+									<div class="item video-right justify-content-center align-items-center d-flex" style="background:url({% static 'img/video-bg.jpg' %}) no-repeat center;background-size: cover;">
+									<div class="overlay overlay-bg"></div>
+									<a class="play-btn" href="https://www.youtube.com/watch?v=ARA0AxrnHdM"><img class="img-fluid" src="{% static 'databreak2018/img/play-icon.png' %}" alt=""></a>
+									</div>	
+									<div class="item video-right justify-content-center align-items-center d-flex" style="background:url({% static 'img/video-bg.jpg' %}) no-repeat center;background-size: cover;">
+									<div class="overlay overlay-bg"></div>
+									<a class="play-btn" href="https://www.youtube.com/watch?v=ARA0AxrnHdM"><img class="img-fluid" src="{% static 'databreak2018/img/play-icon.png' %}" alt=""></a>
+									</div>																		
+							</div>							
+						</div> 
+					</div>
+				</div>	
+			</section>
+			<!-- End video-sec Area -->
+
+
+			<!-- Start spekers Area -->
+			<section class="spekers-area pb-100" id="speakers">
+				<div class="container-fluid">
+					<div class="row no-padding">
+						<div class="active-speaker-carusel col-lg-12 no-padding">
+							<div class="single-speaker item">
+								<div class="container">
+									<div class="row align-items-center">
+										<div class="col-md-6 speaker-img no-padding">
+											<img src="{% static 'databreak2018/img/s1.jpg' %}" alt="">
+										</div>
+										<div class="col-md-6 speaker-info no-padding">
+											<h6 class="text-uppercase">speaker 01</h6>
+											<h1 class="text-white">Essie Ballard</h1>
+											<p>
+												Computer users and programmers have become so accustomed to using Windows, even for the changing capabilities and the appearances.
+											</p>
+											<p><span class="lnr lnr-phone-handset"></span>+880 (012) 8954 253</p>
+											<p><span class="lnr lnr-location"></span>iamspeaker@gmail.com</p>
+											<ul>
+												<a href="#"><i class="fa fa-facebook"></i></a>
+												<a href="#"><i class="fa fa-twitter"></i></a>
+												<a href="#"><i class="fa fa-dribbble"></i></a>
+												<a href="#"><i class="fa fa-behance"></i></a>
+											</ul>
+										</div>
+									</div>
+								</div>								
+							</div>
+							<div class="single-speaker item">
+								<div class="container">
+									<div class="row align-items-center">
+										<div class="col-md-6 speaker-img no-padding">
+											<img src="{% static 'databreak2018/img/s2.jpg' %}" alt="">
+										</div>
+										<div class="col-md-6 speaker-info no-padding">
+											<h6 class="text-uppercase">speaker 02</h6>
+											<h1 class="text-white">Elizabeth Stokes</h1>
+											<p>
+												Computer users and programmers have become so accustomed to using Windows, even for the changing capabilities and the appearances.
+											</p>
+											<p><span class="lnr lnr-phone-handset"></span>+880 (012) 8954 253</p>
+											<p><span class="lnr lnr-location"></span>iamspeaker@gmail.com</p>
+											<ul>
+												<a href="#"><i class="fa fa-facebook"></i></a>
+												<a href="#"><i class="fa fa-twitter"></i></a>
+												<a href="#"><i class="fa fa-dribbble"></i></a>
+												<a href="#"><i class="fa fa-behance"></i></a>
+											</ul>
+										</div>
+									</div>
+								</div>								
+							</div>	
+							<div class="single-speaker item">
+								<div class="container">
+									<div class="row align-items-center">
+										<div class="col-md-6 speaker-img no-padding">
+											<img src="{% static 'databreak2018/img/s1.jpg' %}" alt="">
+										</div>
+										<div class="col-md-6 speaker-info no-padding">
+											<h6 class="text-uppercase">speaker 01</h6>
+											<h1 class="text-white">Essie Ballard</h1>
+											<p>
+												Computer users and programmers have become so accustomed to using Windows, even for the changing capabilities and the appearances.
+											</p>
+											<p><span class="lnr lnr-phone-handset"></span>+880 (012) 8954 253</p>
+											<p><span class="lnr lnr-location"></span>iamspeaker@gmail.com</p>
+											<ul>
+												<a href="#"><i class="fa fa-facebook"></i></a>
+												<a href="#"><i class="fa fa-twitter"></i></a>
+												<a href="#"><i class="fa fa-dribbble"></i></a>
+												<a href="#"><i class="fa fa-behance"></i></a>
+											</ul>
+										</div>
+									</div>
+								</div>								
+							</div>	
+							<div class="single-speaker item">
+								<div class="container">
+									<div class="row align-items-center">
+										<div class="col-md-6 speaker-img no-padding">
+											<img src="{% static 'databreak2018/img/s2.jpg' %}" alt="">
+										</div>
+										<div class="col-md-6 speaker-info no-padding">
+											<h6 class="text-uppercase">speaker 02</h6>
+											<h1 class="text-white">Elizabeth Stokes</h1>
+											<p>
+												Computer users and programmers have become so accustomed to using Windows, even for the changing capabilities and the appearances.
+											</p>
+											<p><span class="lnr lnr-phone-handset"></span>+880 (012) 8954 253</p>
+											<p><span class="lnr lnr-location"></span>iamspeaker@gmail.com</p>
+											<ul>
+												<a href="#"><i class="fa fa-facebook"></i></a>
+												<a href="#"><i class="fa fa-twitter"></i></a>
+												<a href="#"><i class="fa fa-dribbble"></i></a>
+												<a href="#"><i class="fa fa-behance"></i></a>
+											</ul>
+										</div>
+									</div>
+								</div>								
+							</div>																					
+						</div>
+					</div>
+				</div>	
+			</section>
+			<!-- End spekers Area -->
+			
+
+			<!-- Start schedule Area -->
+			<section class="schedule-area pb-100" id="schedule">
+				<div class="container">
+					<div class="row d-flex justify-content-center">
+						<div class="menu-content pb-70 col-lg-8">
+							<div class="title text-center">
+								<h1 class="mb-10">Speech Schedule</h1>
+								<p>Who are in extremely love with eco friendly system.</p>
+							</div>
+						</div>
+					</div>
+
+					<div id="scheduler"></div>
+					{% for s in schedule %}
+					<script>console.log("{{ s.title }}");</script>
+					{% endfor %}
+				</div>	
+			</section>
+			<!-- End schedule Area -->
+			<script src="{% static 'databreak2018/js/vendor/jquery-2.2.4.min.js' %}"></script>
+			<script src="{% static 'databreak2018/js/scheduler.js' %}"></script>
+			<script type="text/javascript"
+					src="https://cdn3.devexpress.com/jslib/18.1.6/js/dx.all.js"></script>
+
+
+			<!-- Start brand Area -->
+			<section class="brand-area section-gap" id="supporters" style="clear: both">
+				<div class="container">
+					<div class="row d-flex justify-content-center">
+						<div class="menu-content pb-70 col-lg-8">
+							<div class="title text-center">
+								<h1 class="mb-10">Supporters</h1>
+								<p>행사에 도움을 주시는 감사한 분들</p>
+							</div>
+						</div>
+					</div>
+					<div class="row logo-wrap">
+						<a class="col single-img" href="#">
+							<img class="d-block mx-auto" src="{% static 'databreak2018/img/l1.png' %}" alt="">
+						</a>
+						<a class="col single-img" href="#">
+							<img class="d-block mx-auto" src="{% static 'databreak2018/img/l2.png' %}" alt="">
+						</a>
+						<a class="col single-img" href="#">
+							<img class="d-block mx-auto" src="{% static 'databreak2018/img/l3.png' %}" alt="">
+						</a>
+						<a class="col single-img" href="#">
+							<img class="d-block mx-auto" src="{% static 'databreak2018/img/l4.png' %}" alt="">
+						</a>
+						<a class="col single-img" href="#">
+							<img class="d-block mx-auto" src="{% static 'databreak2018/img/l5.png' %}" alt="">
+						</a>
+					</div>	
+				</div>	
+			</section>
+			<!-- End brand Area -->	
+							
+				
+			<!-- Start callaction Area -->
+			<section class="callaction-area relative section-gap">
+				<div class="overlay overlay-bg"></div>
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-lg-10">
+							<h1 class="text-white">캐글과 데이터 분석을 함께해요!</h1>
+							<p>데이터를 쉽게 뽀개는 것을 목표로 수평적으로 공부할 수 있는 오픈 모임을 지향합니다</p>
+							<a class="callaction-btn" target="_blank" href="/">캐글뽀개기 바로가기</a>
+						</div>
+					</div>
+				</div>	
+			</section>
+			<!-- End callaction Area -->
+					
+
+			<!-- start footer Area -->		
+			<footer class="footer-area section-gap">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-5 col-md-6 col-sm-6">
+							<div class="single-footer-widget">
+								<h6>About Us</h6>
+								<p>
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore magna aliqua.
+								</p>
+								<p class="footer-text">
+									<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+									All Rights Reserved. &copy;<script>document.write(new Date().getFullYear());</script> KaggleBreak.
+									Made by Lynn Hong
+									<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+								</p>								
+							</div>
+						</div>
+						<div class="col-lg-5  col-md-6 col-sm-6">
+							<div class="single-footer-widget">
+								<h6>Newsletter</h6>
+								<p>Stay update with our latest</p>
+								<div class="" id="mc_embed_signup">
+									<form target="_blank" novalidate="true"
+										  action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="form-inline">
+										<input class="form-control" name="EMAIL" placeholder="Enter Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email '" required="" type="email">
+			                            	<button class="click-btn btn btn-default"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
+			                            	<div style="position: absolute; left: -5000px;">
+												<input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
+											</div>
+										<div class="info"></div>
+									</form>
+								</div>
+							</div>
+						</div>						
+						<div class="col-lg-2 col-md-6 col-sm-6 social-widget">
+							<div class="single-footer-widget">
+								<h6>Follow Us</h6>
+								<p>Let us be social</p>
+								<div class="footer-social d-flex align-items-center">
+									<a target="_blank" href="{{ rep_contact.facebook }}"><i class="fa fa-facebook"></i></a>
+								</div>
+							</div>
+						</div>							
+					</div>
+				</div>
+			</footer>	
+			<!-- End footer Area -->	
+
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' %}"
+					integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+					crossorigin="anonymous"></script>
+			<script src="{% static 'databreak2018/js/vendor/bootstrap.min.js' %}"></script>
+			<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+  			<script src="{% static 'databreak2018/js/easing.min.js' %}"></script>
+			<script src="{% static 'databreak2018/js/hoverIntent.js' %}"></script>
+			<script src="{% static 'databreak2018/js/superfish.min.js' %}"></script>
+			<script src="{% static 'databreak2018/js/jquery.ajaxchimp.min.js' %}"></script>
+			<script src="{% static 'databreak2018/js/jquery.magnific-popup.min.js' %}"></script>
+			<script src="{% static 'databreak2018/js/owl.carousel.min.js' %}"></script>
+			<script src="{% static 'databreak2018/js/jquery.sticky.js' %}"></script>
+			<script src="{% static 'databreak2018/js/jquery.nice-select.min.js' %}"></script>
+			<script src="{% static 'databreak2018/js/parallax.min.js' %}"></script>
+			<script src="{% static 'databreak2018/js/mail-script.js' %}"></script>
+			<script src="{% static 'databreak2018/js/main.js' %}"></script>
+
+		</body>
+	</html>
+
+
+

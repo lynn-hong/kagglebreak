@@ -1,0 +1,6 @@
+[client]
+database = KAGGLEBREAK
+host = localhost
+user = root
+password = morning09
+default-character-set = utf8

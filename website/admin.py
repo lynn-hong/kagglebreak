@@ -5,7 +5,8 @@ from .models import Activity, ActivityKeyword, ActivityLeader, ActivitySponsor, 
 
 @admin.register(Activity)
 class ActivityAdmin(admin.ModelAdmin):
-    list_display = ['act_type', 'title', 'goal', 'summary', 'level', 'textbook', 'curriculum']
+    list_display = ['id', 'act_type', 'title', 'goal', 'summary', 'level', 'textbook', 'curriculum']
+    list_display_links = ['title']
 
 @admin.register(ActivityKeyword)
 class ActivityKeywordAdmin(admin.ModelAdmin):

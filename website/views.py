@@ -52,6 +52,9 @@ class IndexDatabreak2018(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(IndexDatabreak2018, self).get_context_data(**kwargs)
         context['rep_contact'] = get_rep_contact()
+        context['sponsors'] = ActivitySponsor.objects\
+            .values("s__picture", "s__name", "spon_level", "spon_type", "s__contact__info")\
+            .filter(a__id=1)
         #context['schedule'] = json.dumps(Presentation.objects.all().filter(e=6))
         #print(context['schedule'])
         return context

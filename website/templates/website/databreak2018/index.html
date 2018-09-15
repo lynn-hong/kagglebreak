@@ -38,6 +38,7 @@
 			<link rel="stylesheet" href="{% static 'databreak2018/css/owl.carousel.css' %}">
 			<link rel="stylesheet" href="{% static 'databreak2018/css/main.css' %}">
 			<link rel="stylesheet" href="{% static 'databreak2018/css/scheduler.css' %}">
+			<link rel="stylesheet" href="{% static 'databreak2018/css/my.css' %}">
 
 		</head>
 		<body>
@@ -329,21 +330,14 @@
 						</div>
 					</div>
 					<div class="row logo-wrap">
-						<a class="col single-img" href="#">
-							<img class="d-block mx-auto" src="{% static 'databreak2018/img/l1.png' %}" alt="">
+						{% for s in sponsors %}
+						<a class="col single-img sponsor" href={{ s.s__contact__info }} target="_blank">
+							<img class="d-block mx-auto sponsor"
+								 src="static/{{ s.s__picture }}"
+								 alt="">
+
 						</a>
-						<a class="col single-img" href="#">
-							<img class="d-block mx-auto" src="{% static 'databreak2018/img/l2.png' %}" alt="">
-						</a>
-						<a class="col single-img" href="#">
-							<img class="d-block mx-auto" src="{% static 'databreak2018/img/l3.png' %}" alt="">
-						</a>
-						<a class="col single-img" href="#">
-							<img class="d-block mx-auto" src="{% static 'databreak2018/img/l4.png' %}" alt="">
-						</a>
-						<a class="col single-img" href="#">
-							<img class="d-block mx-auto" src="{% static 'databreak2018/img/l5.png' %}" alt="">
-						</a>
+						{% endfor %}
 					</div>	
 				</div>	
 			</section>

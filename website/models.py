@@ -47,6 +47,13 @@ MEMBER_TYPE = (
     (4, 'Supporter'),
 )
 
+SPON_LEVEL = (
+    (0, 'Diamond'),
+    (1, 'Gold'),
+    (2, 'Silver'),
+    (3, 'Bronze'),
+    (4, 'Heart')
+)
 
 class Home(models.Model):
     top = models.CharField(max_length=255, blank=True, null=True)
@@ -124,6 +131,7 @@ class ActivitySponsor(models.Model):
     a = models.ForeignKey(Activity)
     s = models.ForeignKey('Member')
     spon_type = models.CharField(max_length=45, blank=True, null=True)
+    spon_level = models.IntegerField(choices=SPON_LEVEL, default=0)
 
     class Meta:
         managed = True

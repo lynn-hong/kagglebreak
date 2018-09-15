@@ -17,7 +17,7 @@ class ActivityLeaderAdmin(admin.ModelAdmin):
 
 @admin.register(ActivitySponsor)
 class ActivitySponsorAdmin(admin.ModelAdmin):
-    list_display = ['a', 's', 'spon_type']
+    list_display = ['a', 's', 'spon_level', 'spon_type']
     list_display_links = ['s']
 
 @admin.register(Attendance)

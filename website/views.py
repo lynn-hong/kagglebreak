@@ -42,7 +42,7 @@ class Index(TemplateView):
         context['coc_lefts'], context['coc_rights'] = self.get_coc()
         context['managers'] = self.get_manager()
         context['rep_contact'] = get_rep_contact()
-        context['sponsors'] = Member.objects.all().filter(type=3)
+        context['sponsors'] = Member.objects.all().filter(type=3).filter(affiliation="상시")
         return context
 
 

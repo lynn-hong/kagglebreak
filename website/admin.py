@@ -17,7 +17,8 @@ class ActivityLeaderAdmin(admin.ModelAdmin):
 
 @admin.register(ActivitySponsor)
 class ActivitySponsorAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['a', 's', 'spon_type']
+    list_display_links = ['s']
 
 @admin.register(Attendance)
 class AttendanceAdmin(admin.ModelAdmin):
@@ -26,6 +27,8 @@ class AttendanceAdmin(admin.ModelAdmin):
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
     list_display = ['m', 'contact_type', 'info']
+    ordering = ['m__type', 'm__name', 'contact_type']
+    search_fields = ['m', 'info']
 
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
@@ -48,6 +51,9 @@ class MaterialAdmin(admin.ModelAdmin):
 class MemberAdmin(admin.ModelAdmin):
     list_display = ['category', 'type', 'name', 'nickname_eng',
                     'affiliation', 'interest', 'introduction', 'picture']
+    list_display_links = ['name']
+    ordering = ['type', 'name']
+    search_fields = ['name', 'affiliation', 'interest', 'interest']
 
 @admin.register(Presentation)
 class PresentationAdmin(admin.ModelAdmin):

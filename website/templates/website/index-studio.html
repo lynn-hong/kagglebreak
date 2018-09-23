@@ -14,7 +14,7 @@
 <!--Custom Styles-->
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 <link href="https://fonts.googleapis.com/css?family=Do+Hyeon:100,200,400,300,500,600,700" rel="stylesheet">
-
+<link rel="stylesheet" media="(min-width: 1000px)" href="{% static 'css/my_mobile.css' %}">
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="90">
 
@@ -82,6 +82,7 @@
          <!--Social Icons-->
          <ul class="social-icons white d-md-none">
             <li><a target="_blank" href="{{ rep_contact.facebook }}"><i class="fa fa-facebook"></i> </a> </li>
+            <li><a target="_blank" href="{{ rep_contact.slack }}"><i class="fa fa-slack"></i> </a> </li>
             <li><a target="_blank" href="mailto:{{ rep_contact.email }}"><i class="fa fa-envelope-o"></i> </a> </li>
          </ul>
       </div>
@@ -288,30 +289,38 @@
       </div>
       <div class="row">
          <ul class="process-wrapp">
-            <li class="whitecolor wow fadeIn" data-wow-delay="150ms">
+            <li class="whitecolor wow fadeIn rule" data-wow-delay="150ms">
                <span class="pro-step bottom20">01</span>
-               <p class="fontbold bottom25">Concept</p>
-               <p>Quisque tellus risus, adipisci viverra bibendum urna.</p>
+               <p class="fontbold bottom25">예의와 친절</p>
+               <p>스터디를 참여하는 모든 참여자들은
+                  다른 참여자들에게 기본적인 예의와 친절을 지키고 모욕하거나 폄하하지 않는다.</p>
             </li>
-            <li class="whitecolor wow fadeIn" data-wow-delay="250ms">
+            <li class="whitecolor wow fadeIn rule" data-wow-delay="250ms">
                <span class="pro-step bottom20">02</span>
-               <p class="fontbold bottom25">Plan</p>
-               <p>Quisque tellus risus, adipisci viverra bibendum urna.</p>
+               <p class="fontbold bottom25">캐글규칙 준수</p>
+               <p>캐글(Kaggle) 대회의 참여하는 그룹은
+                  사이트의 규칙을 준수하며 캐글 플랫폼(커널, 토론 등)에 기여할 수 있도록 노력한다.</p>
             </li>
-            <li class="whitecolor wow fadeIn" data-wow-delay="350ms">
+            <li class="whitecolor wow fadeIn rule" data-wow-delay="350ms">
                <span class="pro-step bottom20">03</span>
-               <p class="fontbold bottom25">Design</p>
-               <p>Quisque tellus risus, adipisci viverra bibendum urna.</p>
+               <p class="fontbold bottom25">발제 형식</p>
+               <p>스터디 첫 날 커리큘럼을 소개하며 발제자를 구한다.
+                  참가하는 스터디원들의 발제 형태로 진행한다.
+                  (1개 파트 내에서 최소 1번의 발표를 하는 것이 예의, 매너)</p>
             </li>
-            <li class="whitecolor wow fadeIn" data-wow-delay="600ms">
+            <li class="whitecolor wow fadeIn rule" data-wow-delay="600ms">
                <span class="pro-step bottom20">04</span>
-               <p class="fontbold bottom25">Development</p>
-               <p>Quisque tellus risus, adipisci viverra bibendum urna.</p>
+               <p class="fontbold bottom25">도덕적 신념</p>
+               <p>이 모임을 빌미로 공짜로 일을 시키지 않는다.</p>
+               <p>이 모임에서 성적/폭력적 이슈를 발생시키지 않는다.</p>
             </li>
-            <li class="whitecolor wow fadeIn" data-wow-delay="700ms">
+            <li class="whitecolor wow fadeIn rule" data-wow-delay="700ms">
                <span class="pro-step bottom20">05</span>
-               <p class="fontbold bottom25">Quality Check</p>
-               <p>Quisque tellus risus, adipisci viverra bibendum urna.</p>
+               <p class="fontbold bottom25">스터디 개설은 누구나 가능</p>
+               <p>캐글뽀개기 내 스터디는 오픈 모임을 지향하며
+                  이러한 형태로 운영할 경우 누구나 스터디를 개설할 수 있다.</p>
+               <p>* 오픈 모임: 모임일시/장소, 참여방법, 다루는 내용, 참여 사진을
+                  그룹 내에서 공지 및 공유하고 운영되는 스터디</p>
             </li>
          </ul>
       </div>
@@ -325,7 +334,7 @@
       <div class="row">
          <div class="col-md-6 nopadding">
             <div class="image hover-effect img-container">
-               <img alt="" src="{% static 'images/split-img1.jpg' %}" class="equalheight">
+               <img alt="" src="{% static 'images/poster_for_web.png' %}" class="equalheight">
             </div>
          </div>
          <div class="col-md-6 nopadding">
@@ -353,8 +362,8 @@
    <div class="container">
       <div class="row">
          <div class="col-md-5 col-sm-12 margin_bottom whitecolor text-md-left text-center wow fadeInUp" data-wow-delay="150ms">
-            <h3 class="bottom25">Our many years of experience in numbers</h3>
-            <p class="title">We show you our professional achievements in numbers, which show the acquired skills and trust of many clients.</p>
+            <h3 class="bottom25">숫자로 보는 캐글뽀개기</h3>
+            <p class="title">많은 이들과 함께 지내온 날들을 기억합니다, 더 많은 이들과 만들어갈 날들을 기대합니다</p>
          </div>
          <div class="col-md-7 col-sm-12 text-center">
             <div class="row">
@@ -363,27 +372,27 @@
                      <i class="fa fa-smile-o"></i>
                   </div>
                   <div class="counters">
-                     <span class="count_nums" data-to="3088" data-speed="3088"> </span> <i class="fa fa-plus"></i>
+                     <span class="count_nums" data-to="28" data-speed="2500"> </span> <i class="fa fa-plus"></i>
                   </div>
-                  <p class="title">캐글뽀개기 멤버 수</p>
+                  <p class="title">참여했던 대회 수</p>
                </div>
                <div class="col-md-4 col-sm-4 icon-counters whitecolor margin_bottom wow fadeIn" data-wow-delay="250ms">
                   <div class="img-icon bottom15">
                      <i class="fa fa-language"> </i>
                   </div>
                   <div class="counters">
-                     <span class="count_nums" data-to="9500" data-speed="2500"> </span> <i class="fa fa-plus"></i>
+                     <span class="count_nums" data-to="1214" data-speed="2500"> </span> <i class="fa fa-plus"></i>
                   </div>
-                  <p class="title">Completed consultations</p>
+                  <p class="title">2015년부터 지금까지</p>
                </div>
                <div class="col-md-4 col-sm-4 icon-counters whitecolor margin_bottom wow fadeIn" data-wow-delay="300ms">
                   <div class="img-icon bottom15">
                      <i class="fa fa-desktop"></i>
                   </div>
                   <div class="counters">
-                     <span class="count_nums" data-to="6000" data-speed="2500"> </span> <i class="fa fa-plus"></i>
+                     <span class="count_nums" data-to="3088" data-speed="2500"> </span> <i class="fa fa-plus"></i>
                   </div>
-                  <p class="title">Carried out training</p>
+                  <p class="title">페이스북 그룹 멤버 수</p>
                </div>
             </div>
          </div>
@@ -495,7 +504,7 @@
                </div>
                <div class="col-md-6 col-sm-6 our-address top40">
                   <h5 class="bottom25">Our Email</h5>
-                  <p class="bottom15">Main Email : {{ rep_contact.email }} <span class="block">Inquiries : email@website.com</span> </p>
+                  <p class="bottom15">Main Email : {{ rep_contact.email }} <span class="block"></span> </p>
                   <a class="pickus" href="mailto:{{ rep_contact.email }}" data-text="Send a Message">Send a Message</a>
                </div>
             </div>
@@ -517,7 +526,7 @@
                <li><a target="_blank" href={{ rep_contact.facebook }}>
                   <i class="fa fa-facebook"></i>
                </a></li>
-               <li><a target="_blank" href="javascript:void(0)"><i class="fa fa-instagram"></i> </a> </li>
+               <li><a target="_blank" href={{ rep_contact.slack }}><i class="fa fa-slack"></i> </a> </li>
                <li><a target="_blank" href="mailto:{{ rep_contact.email }}"><i class="fa fa-envelope-o"></i> </a> </li>
             </ul>
             <script type="text/javascript">

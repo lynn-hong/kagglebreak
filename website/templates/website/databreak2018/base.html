@@ -1,0 +1,242 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+	<html lang="ko" class="no-js">
+	<head>
+
+		<script src="{% static 'databreak2018/js/vendor/jquery-2.2.4.min.js' %}"></script>
+		<script type="text/javascript">
+			$(window).load(function() {
+				 $('#loading').hide();
+			});
+		</script>
+
+		<style>
+		/* loading image */
+		#loading {
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			position: fixed;
+			display: block;
+			opacity: 1;
+			background-color: #fff;
+			z-index: 99;
+			text-align: center;
+		}
+
+		#loading-image {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			z-index: 100;
+		}
+		</style>
+
+		<!-- Mobile Specific Meta -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Favicon-->
+		<link rel="shortcut icon" href="{% static 'databreak2018/img/fav.png' %}">
+		<!-- Author Meta -->
+		<meta name="author" content="codepixer">
+		<!-- Meta Description -->
+		<meta name="description" content="">
+		<!-- Meta Keyword -->
+		<meta name="keywords" content="">
+		<!-- meta character set -->
+		<meta charset="UTF-8">
+		<!-- Site Title -->
+		<title>DataBreak2018: Hello Kagglers!</title>
+
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono:100,200,400,300,500,600,700" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Do+Hyeon:100,200,400,300,500,600,700" rel="stylesheet">
+			<!--
+			CSS
+			============================================= -->
+		<!-- DevExtreme themes -->
+			<link rel="stylesheet" href="{% static 'databreak2018/css/dx.common.css' %}">
+			<link rel="stylesheet" href="{% static 'databreak2018/css/dx.light.css' %}">
+
+			<link rel="stylesheet" href="{% static 'databreak2018/css/linearicons.css' %}">
+			<link rel="stylesheet" href="{% static 'databreak2018/css/font-awesome.min.css' %}">
+			<link rel="stylesheet" href="{% static 'databreak2018/css/bootstrap.css' %}">
+			<link rel="stylesheet" href="{% static 'databreak2018/css/magnific-popup.css' %}">
+			<link rel="stylesheet" href="{% static 'databreak2018/css/nice-select.css' %}">					
+			<link rel="stylesheet" href="{% static 'databreak2018/css/animate.min.css' %}">
+			<link rel="stylesheet" href="{% static 'databreak2018/css/owl.carousel.css' %}">
+			<link rel="stylesheet" href="{% static 'databreak2018/css/main.css' %}">
+			<link rel="stylesheet" href="{% static 'databreak2018/css/scheduler.css' %}">
+			<link rel="stylesheet" href="{% static 'databreak2018/css/my.css' %}">
+			<link rel="stylesheet" media="(min-width: 1000px)" href="{% static 'databreak2018/css/my_mobile.css' %}">
+
+		</head>
+		<body>
+			<div id="loading"><img id="loading-image" src="{% static 'databreak2018/img/loading_dot.gif' %}"
+								   alt="Loading..." /></div>
+
+			<header id="header">
+			    <div class="container">
+			    	<div class="row align-items-center justify-content-between d-flex">
+				        <div id="logo">
+				            <a href="{% url 'databreak2018' %}">
+							<img style="max-width: 180px; margin-left: 40px;"
+								src="{% static 'databreak2018/img/long_logo_white.png' %}" alt="" title="" /></a>
+				        </div>
+				        <nav id="nav-menu-container">
+				            <ul class="nav-menu">
+								<li class="menu-active"><a href="{% url 'databreak2018' %}#about">About</a></li>
+				            	<li><a href="{% url 'coc' %}#coc">CoC</a></li>
+								<li><a href="{% url 'databreak2018' %}#speakers">Speakers</a></li>
+								<li><a href="{% url 'databreak2018' %}#schedule">Schedule</a></li>
+								<li>
+									<a onclick="alert('미니 분석대회는 곧 오픈됩니다! 조금만 기다려 주세요 :)')">Competition
+									</a>
+								</li>
+								<li class="menu-has-children"><a href="#">Supporters</a>
+				                <ul>
+									<li><a href="{% url 'databreak2018' %}#sponsors">Sponsors</a></li>
+									<li><a href="{% url 'databreak2018' %}#supporters">Supporters</a></li>
+									<li><a href="{% url 'sponsorship' %}">Sponsorship Guideline</a></li>
+				                </ul>
+				            </li>
+				            <li><a class="ticker-btn" target="_blank"
+								   href="https://festa.io/events/87">Register</a></li>
+				            </ul>
+				        </nav><!-- #nav-menu-container -->
+			    	</div>
+			    </div>
+			</header><!-- #header -->
+
+
+            {% block content %}
+            {% endblock %}
+
+
+			<!-- Start brand Area -->
+			<section class="brand-area section-gap" id="sponsors" style="clear: both">
+				<div class="container">
+					<div class="row d-flex justify-content-center">
+						<div class="menu-content pb-70 col-lg-8">
+							<div class="title text-center">
+								<h1 class="mb-10">Sponsors</h1>
+								<p>행사를 물심양면으로 지원해주신 스폰서 분들</p>
+							</div>
+						</div>
+					</div>
+					<div class="row logo-wrap">
+						{% for s in sponsors %}
+						<a class="col single-img sponsor" href={{ s.s__contact__info }} target="_blank">
+							<img class="d-block mx-auto sponsor"
+								 src="/static/{{ s.s__picture }}"
+								 alt="">
+
+						</a>
+						{% endfor %}
+					</div>	
+				</div>	
+			</section>
+			<!-- End brand Area -->
+
+
+			<!-- Start brand Area -->
+			<section class="brand-area section-gap" id="supporters" style="clear: both">
+				<div class="container">
+					<div class="row d-flex justify-content-center">
+						<div class="menu-content pb-70 col-lg-8">
+							<div class="title text-center">
+								<h1 class="mb-10">Supporters</h1>
+								<p>보이지 않는 곳에서 행사에 도움을 주신 감사한 분들</p>
+
+							</div>
+						</div>
+					</div>
+					<div class="row logo-wrap">
+						{% for su in supporters %}
+							<a class="col single-img" href={{ su.s__contact__info }} target="_blank">
+								<img class="d-block mx-auto supporter"
+									 src="/static/databreak2018/img/supporters/{{ su.s__picture }}"
+									 alt="">
+							</a>
+						{% endfor %}
+					</div>
+				</div>
+			</section>
+			<!-- End brand Area -->
+
+
+
+			<!-- Start callaction Area -->
+			<section class="callaction-area relative section-gap">
+				<div class="overlay overlay-bg"></div>
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-lg-10">
+							<h1 class="text-white">캐글과 데이터 분석을 함께해요!</h1>
+							<p>데이터를 쉽게 뽀개는 것을 목표로 수평적으로 공부할 수 있는 오픈 모임을 지향합니다</p>
+							<a class="callaction-btn" target="_blank" href="/">캐글뽀개기 바로가기</a>
+						</div>
+					</div>
+				</div>	
+			</section>
+			<!-- End callaction Area -->
+					
+
+			<!-- start footer Area -->		
+			<footer class="footer-area section-gap">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-7 col-md-6 col-sm-6">
+							<div class="single-footer-widget">
+								<h6>About Us</h6>
+								<p>
+									캐글뽀개기(KaggleBreak):
+									데이터 과학, 분석적 사고, 캐글에 대한 관심으로 모인 사람들의 공간입니다.
+									3,000명 이상의 멤버들이 함께하는 국내 최대 캐글 관련 커뮤니티입니다.
+								</p>
+								<p class="footer-text">
+									<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+									All Rights Reserved. &copy;<script>document.write(new Date().getFullYear());</script> KaggleBreak.
+									Made by Lynn Hong
+									<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+								</p>								
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-6 col-sm-6 social-widget">
+							<div class="single-footer-widget">
+								<h6>Join Us</h6>
+								<p>We are originally based on a Facebook group.</p>
+								<div class="footer-social d-flex align-items-center">
+									<a target="_blank" href="{{ rep_contact.facebook }}">
+										<i class="fa fa-facebook"></i>
+									</a>
+								</div>
+							</div>
+						</div>							
+					</div>
+				</div>
+			</footer>	
+			<!-- End footer Area -->	
+
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' %}"
+					integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+					crossorigin="anonymous"></script>
+			<script src="{% static 'databreak2018/js/vendor/bootstrap.min.js' %}"></script>
+			<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+  			<script src="{% static 'databreak2018/js/easing.min.js' %}"></script>
+			<script src="{% static 'databreak2018/js/hoverIntent.js' %}"></script>
+			<script src="{% static 'databreak2018/js/superfish.min.js' %}"></script>
+			<script src="{% static 'databreak2018/js/jquery.ajaxchimp.min.js' %}"></script>
+			<script src="{% static 'databreak2018/js/jquery.magnific-popup.min.js' %}"></script>
+			<script src="{% static 'databreak2018/js/owl.carousel.min.js' %}"></script>
+			<script src="{% static 'databreak2018/js/jquery.sticky.js' %}"></script>
+			<script src="{% static 'databreak2018/js/jquery.nice-select.min.js' %}"></script>
+			<script src="{% static 'databreak2018/js/parallax.min.js' %}"></script>
+			<script src="{% static 'databreak2018/js/mail-script.js' %}"></script>
+			<script src="{% static 'databreak2018/js/main.js' %}"></script>
+
+		</body>
+	</html>
+
+
+

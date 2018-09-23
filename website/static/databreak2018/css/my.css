@@ -1,6 +1,101 @@
+body{
+    font-size: 16px;
+}
 img.sponsor {
-    width: 159px;
+    width: 200px;
     position: relative;
     top: 50%;
     transform: translateY(-50%);
+}
+
+img.supporter {
+    width: 150px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.logo-wrap p {
+    diaplay: inline-block;
+}
+
+.horizontal-line:after {
+    content: " ";
+    display: block;
+    border-bottom: 1px solid darkgray;
+    padding-bottom: 5px;
+}
+
+a.icon-circle {
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    font-size: 20px;
+    background: #8ab92d;
+    text-align: center;
+    line-height: 30px;
+    outline: none;
+    text-decoration: none;
+    margin: 30px 0;
+}
+
+h4.main-info {
+    font-size: 22px;
+}
+
+h6.main-info {
+    font-size: 22px;
+}
+
+.single-speaker h1 {
+    float: left;
+    margin: 20px 20px 20px 0;
+}
+
+.dx-scheduler-appointment-title{
+    font-size: 20px;
+}
+
+.speech_tooltip{
+    text-align: left;
+}
+
+.top-margin{
+    margin-top: 15px;
+}
+
+img.schedule-pic{
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+}
+
+.icon-right-padding{
+    padding-right: 5px;
+}
+
+img.pacman_img{
+    height: 1em;
+}
+
+li.top-padding{
+    padding-top: 50px;
+}
+#coc{
+    background: rgba(0,0,0,0.8);
+}
+
+#coc hr{
+    border-color: #777;
+}
+.subtitle{
+    background: #777;
+    color: white;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+#coc body{
+    font-size: 20px;
 }

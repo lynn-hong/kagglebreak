@@ -211,7 +211,7 @@ class Member(models.Model):
     nickname_eng = models.CharField(max_length=45)
     affiliation = models.CharField(max_length=45, blank=True, null=True)
     interest = models.CharField(max_length=255, blank=True, null=True)
-    introduction = models.CharField(max_length=255, blank=True, null=True)
+    introduction = models.CharField(max_length=355, blank=True, null=True)
     picture = models.CharField(max_length=225, blank=True, null=True)
 
     class Meta:

@@ -27,6 +27,7 @@ CONTACT_TYPE = (
     (7, 'Github'),
     (8, 'Website'),
     (9, 'Address'),
+    (10, 'Slack')
 )
 
 DIRECTION = (

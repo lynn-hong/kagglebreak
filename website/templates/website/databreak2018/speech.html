@@ -1,0 +1,37 @@
+{% extends 'website/databreak2018/base.html' %}
+{% load staticfiles %}
+{% block content %}
+			<!-- Start home-aboutus Area -->
+			<section class="home-aboutus-area" style="padding: 80px 0;">
+				<div class="container-fluid">
+					<div class="row align-items-center">
+						<div class="col-lg-6" style="margin: auto;">
+							<p class="top-title">presentation</p>
+							<h1 class="text-white">"{{ pt.title }}"</h1>
+							<h2 class="text-white">장소: Room {{ pt.specific_location }}</h2>
+							<h2 class="text-white">시간: {{ pt.s_time }}~{{ pt.e_time }}</h2>
+							<p class="text-white" style="padding: 30px 0px 50px 0px;">
+								{{ pt.summary }}
+							</p>
+							{% ifnotequal pt.m.name "캐글뽀개기" %}
+							<img class="schedule-pic" style="float: left; margin-right: 20px;"
+								 src={{ pt.m.picture }}>
+							<h2 class="text-white">
+								<i class="fa fa-user-circle icon-right-padding" aria-hidden="true"></i>
+								발표자: {{ pt.m.name }}
+							</h2>
+							<h2 class="text-white">소속: {{ pt.m.affiliation }}</h2>
+							<h4 class="text-white">
+								<i class="fa fa-commenting icon-right-padding" aria-hidden="true"></i>
+								관심분야: {{ pt.m.interest }}</h4>
+							{% endifnotequal %}
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- End home-aboutus Area -->
+
+
+			<script src="{% static 'databreak2018/js/vendor/jquery-2.2.4.min.js' %}"></script>
+
+{% endblock %}

@@ -18,7 +18,7 @@ class ActivityLeaderAdmin(admin.ModelAdmin):
 
 @admin.register(ActivitySponsor)
 class ActivitySponsorAdmin(admin.ModelAdmin):
-    list_display = ['a', 's', 'spon_level', 'spon_type']
+    list_display = ['id', 'a', 's', 'spon_level', 'spon_type']
     list_display_links = ['s']
 
 @admin.register(Attendance)
@@ -33,7 +33,8 @@ class ContactAdmin(admin.ModelAdmin):
 
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
-    list_display = ['a', 's_datetime', 'e_datetime', 'location']
+    list_display = ['id', 'a', 's_datetime', 'e_datetime', 'location']
+    list_display_links = ['a']
 
 @admin.register(EventPicture)
 class EventPictureAdmin(admin.ModelAdmin):

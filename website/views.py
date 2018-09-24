@@ -99,20 +99,12 @@ class IndexDatabreak2018(TemplateView):
         context['schedule'] = get_schedule()
         return context
 
-def speech(request, pk):
-    context = dict()
-    pt = get_object_or_404(Presentation, pk=pk)
-    context['pt'] = pt
-    return render(request, 'website/databreak2018/speech.html', context,
-                  context_instance=RequestContext(request))
-
 
 class IndexCoC(TemplateView):
     template_name = 'website/databreak2018/coc.html'
 
     def get_context_data(self, **kwargs):
         context = super(IndexCoC, self).get_context_data(**kwargs)
-
         return context
 
 class IndexSponsorship(TemplateView):
@@ -120,5 +112,21 @@ class IndexSponsorship(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(IndexSponsorship, self).get_context_data(**kwargs)
-
         return context
+
+
+def get_specific_speaker(s_id):
+    c_list = list()
+    for c in Contact.objects.all().filter(m__id=s_id):
+        contact_type = c.get_contact_type_display().lower()
+        val = {'contact_type': contact_type, 'url': c.info}
+        c_list.append(val)
+    return c_list
+
+def speech(request, pk):
+    context = dict()
+    pt = get_object_or_404(Presentation, pk=pk)
+    context['pt'] = pt
+    context['contacts'] = get_specific_speaker(pt.m.id)
+    return render(request, 'website/databreak2018/speech.html', context,
+                  context_instance=RequestContext(request))

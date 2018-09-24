@@ -99,3 +99,6 @@ li.top-padding{
 #coc body{
     font-size: 20px;
 }
+#speech a{
+    color: inherit;
+}

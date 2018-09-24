@@ -14,7 +14,11 @@
 					<p><b>PRESENTATION</b></p>
 					<h2 class="mb-30">"{{ pt.title }}"</h2>
 					<ul class="unordered-list">
-						<li><h3 class="mb-30">장소: Room {{ pt.specific_location }}</h3></li>
+						{% if '+' in pt.specific_location %}
+							<li><h3 class="mb-30">장소: 전체</h3></li>
+						{% else %}
+							<li><h3 class="mb-30">장소: Room {{ pt.specific_location }}</h3></li>
+						{% endif %}
 						<li><h3 class="mb-30">시간: {{ pt.s_time }}~{{ pt.e_time }}</h3></li>
 					</ul>
 					<div class="row">

@@ -130,3 +130,7 @@ def speech(request, pk):
     context['contacts'] = get_specific_speaker(pt.m.id)
     return render(request, 'website/databreak2018/speech.html', context,
                   context_instance=RequestContext(request))
+
+
+def not_found(request):
+    return render(request, 'website/databreak2018/404.html')

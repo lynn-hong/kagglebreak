@@ -133,6 +133,7 @@ class ActivitySponsor(models.Model):
     s = models.ForeignKey('Member')
     spon_type = models.CharField(max_length=45, blank=True, null=True)
     spon_level = models.IntegerField(choices=SPON_LEVEL, default=0)
+    order_number = models.IntegerField(default=0)
 
     class Meta:
         managed = True

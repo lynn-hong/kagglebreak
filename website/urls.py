@@ -8,3 +8,4 @@ urlpatterns = [
     url(r'^databreak2018/speech/(?P<pk>\d+)/$', views.speech, name="speech"),
     url(r'^databreak2018/sponsorship$', views.IndexSponsorship.as_view(), name="sponsorship"),
 ]
+

@@ -1,13 +1,24 @@
 body{
     font-size: 16px;
 }
-img.sponsor {
-    width: 200px;
+img.sponsor-dia {
+    width: 330px;
     position: relative;
     top: 50%;
     transform: translateY(-50%);
 }
-
+img.sponsor-gold {
+    width: 250px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+img.sponsor-silver {
+    width: 150px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
 img.supporter {
     width: 150px;
     position: relative;

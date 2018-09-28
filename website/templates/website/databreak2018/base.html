@@ -114,7 +114,8 @@
 
 
             <!-- Start brand Area -->
-            <section class="brand-area section-gap" id="sponsors" style="clear: both">
+            <section class="brand-area section-gap" id="sponsors"
+                     style="clear: both; padding-bottom: 0;">
                 <div class="container section-top-border">
                     <div class="row d-flex justify-content-center">
                         <div class="menu-content pb-70 col-lg-8">
@@ -124,10 +125,28 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row logo-wrap">
-                        {% for s in sponsors %}
+                    <div class="row logo-wrap mb-50">
+                        {% for s in dia_sponsors %}
                         <a class="col single-img sponsor" href={{ s.s__contact__info }} target="_blank">
-                            <img class="d-block mx-auto sponsor"
+                            <img class="d-block mx-auto sponsor-dia"
+                                 src="/static/{{ s.s__picture }}"
+                                 alt="">
+                        </a>
+                        {% endfor %}
+                    </div>
+                    <div class="row logo-wrap mb-50">
+                        {% for s in gold_sponsors %}
+                        <a class="col single-img sponsor" href={{ s.s__contact__info }} target="_blank">
+                            <img class="d-block mx-auto sponsor-gold"
+                                 src="/static/{{ s.s__picture }}"
+                                 alt="">
+                        </a>
+                        {% endfor %}
+                    </div>
+                    <div class="row logo-wrap">
+                        {% for s in silver_sponsors %}
+                        <a class="col single-img sponsor" href={{ s.s__contact__info }} target="_blank">
+                            <img class="d-block mx-auto sponsor-silver"
                                  src="/static/{{ s.s__picture }}"
                                  alt="">
                         </a>

@@ -8,15 +8,23 @@ def get_rep_contact():
     return c_dict
 
 def footer(request):
-    sponsors = ActivitySponsor.objects\
+    dia_sponsors = ActivitySponsor.objects\
         .values("s__picture", "s__name", "spon_level", "spon_type", "s__contact__info")\
-        .filter(a__id=1).order_by('spon_level').exclude(spon_level=4)
+        .filter(a__id=1).order_by('order_number').filter(spon_level=0)
+    gold_sponsors = ActivitySponsor.objects\
+        .values("s__picture", "s__name", "spon_level", "spon_type", "s__contact__info")\
+        .filter(a__id=1).order_by('order_number').filter(spon_level=1)
+    silver_sponsors = ActivitySponsor.objects\
+        .values("s__picture", "s__name", "spon_level", "spon_type", "s__contact__info")\
+        .filter(a__id=1).order_by('order_number').filter(spon_level=2)
     supporters = ActivitySponsor.objects\
         .values("s__picture", "s__name", "spon_level", "spon_type", "s__contact__info")\
         .filter(a__id=1).filter(spon_level=4)
     rep_contact = get_rep_contact()
     return {
-        'sponsors': sponsors,
+        'dia_sponsors': dia_sponsors,
+        'gold_sponsors': gold_sponsors,
+        'silver_sponsors': silver_sponsors,
         'supporters': supporters,
         'rep_contact': rep_contact,
     }

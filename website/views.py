@@ -16,9 +16,9 @@ def get_rep_contact():
     return c_dict
 
 def get_speaker():
-    speakers = Presentation.objects.filter(e=6).exclude(m__type=0).order_by('?')\
+    speakers = Presentation.objects.filter(e=6).exclude(m__type=0).order_by('s_time')\
         .values('id', 'm__picture', 'm__name', 'm__affiliation', 'm__interest', 'm__id',
-                'title', 'summary')
+                'title', 'summary', 's_time', 'e_time', 'specific_location')
     for sp in speakers:
         c_list = list()
         for c in Contact.objects.all().filter(m__id=sp['m__id']):
@@ -107,11 +107,21 @@ class IndexCoC(TemplateView):
         context = super(IndexCoC, self).get_context_data(**kwargs)
         return context
 
+
 class IndexSponsorship(TemplateView):
     template_name = 'website/databreak2018/sponsorship.html'
 
     def get_context_data(self, **kwargs):
         context = super(IndexSponsorship, self).get_context_data(**kwargs)
+        return context
+
+
+class IndexSpeakers(TemplateView):
+    template_name = 'website/databreak2018/speakers.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(IndexSpeakers, self).get_context_data(**kwargs)
+        context['pts'] = get_speaker()
         return context
 
 
@@ -130,7 +140,6 @@ def speech(request, pk):
     context['contacts'] = get_specific_speaker(pt.m.id)
     return render(request, 'website/databreak2018/speech.html', context,
                   context_instance=RequestContext(request))
-
 
 def not_found(request):
     return render(request, 'website/databreak2018/404.html')

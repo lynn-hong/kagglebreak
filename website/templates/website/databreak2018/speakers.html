@@ -1,0 +1,74 @@
+{% extends 'website/databreak2018/base.html' %}
+{% load staticfiles %}
+{% block content %}
+	<script>
+		var myElement = document.querySelector("#header");
+		myElement.style.backgroundColor = "rgba(0,0,0,0.8)";
+	</script>
+			<!-- Start home-aboutus Area -->
+	{% for pt in pts %}
+	<section id="speech" style="margin: 80px 0;">
+		<div class="whole-wrap">
+			<div class="container">
+				<div class="section-top-border">
+					<p><b>PRESENTATION</b></p>
+					<h2 class="mb-30">"{{ pt.title }}"</h2>
+					<ul class="unordered-list">
+						{% if '+' in pt.specific_location %}
+							<li><h3 class="mb-30">장소: 전체</h3></li>
+						{% else %}
+							<li><h3 class="mb-30">장소: Room {{ pt.specific_location }}</h3></li>
+						{% endif %}
+						<li><h3 class="mb-30">시간: {{ pt.s_time }}~{{ pt.e_time }}</h3></li>
+					</ul>
+					<div class="row">
+						<div class="col-md-3 mb-30">
+						{% ifnotequal pt.m__name "캐글뽀개기" %}
+							<img src={{ pt.m__picture }} alt="" class="img-fluid">
+						{% else %}
+							<img src="{% static '/static/databreak2018/img/about/poster_for_web.png' %}" class="img-fluid">
+						{% endifnotequal %}
+						</div>
+						<div class="col-md-9 mt-sm-20">
+							{% ifnotequal pt.m__name "캐글뽀개기" %}
+								<h2 class="mb-20 icon-right-padding" style="display: inline-block; float: left;">
+									<i class="fa fa-user-circle icon-right-padding" aria-hidden="true"></i>
+									발표자: {{ pt.m__name }}
+								</h2>
+								<ul>
+									{% for sp_c in pt.contacts %}
+										{% if sp_c.contact_type == 'email' %}
+											<a class="icon-circle"
+											   target="_blank" href=mailto:{{ sp_c.url }}
+											   style="margin: 5px 0 23px 0;">
+												<i class="fa fa-envelope-o"></i>
+											</a>
+										{% else %}
+											<a class="icon-circle"
+											   target="_blank" href={{ sp_c.url }}
+											   style="margin: 5px 0 23px 0;">
+												<i class="fa fa-{{ sp_c.contact_type }}"></i>
+											</a>
+										{% endif %}
+									{% endfor %}
+								</ul>
+								<h4 class="mb-30">
+									<i class="fa fa-id-card icon-right-padding" aria-hidden="true"></i>
+									{{ pt.m__affiliation }}</h4>
+								<h4 class="mb-30">
+									<i class="fa fa-commenting icon-right-padding" aria-hidden="true"></i>
+									관심분야: {{ pt.m__interest }}
+								</h4>
+							{% endifnotequal %}
+							<blockquote class="generic-blockquote">{{ pt.summary }}</blockquote>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	{% endfor %}
+
+	<script src="{% static 'databreak2018/js/vendor/jquery-2.2.4.min.js' %}"></script>
+
+{% endblock %}

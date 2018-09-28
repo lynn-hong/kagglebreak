@@ -7,5 +7,6 @@ urlpatterns = [
     url(r'^databreak2018/coc$', views.IndexCoC.as_view(), name="coc"),
     url(r'^databreak2018/speech/(?P<pk>\d+)/$', views.speech, name="speech"),
     url(r'^databreak2018/sponsorship$', views.IndexSponsorship.as_view(), name="sponsorship"),
+    url(r'^databreak2018/speakers', views.IndexSpeakers.as_view(), name="speakers"),
 ]
 

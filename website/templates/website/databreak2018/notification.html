@@ -1,0 +1,60 @@
+{% extends 'website/databreak2018/base.html' %}
+{% load staticfiles %}
+{% block content %}
+	<script>
+		var myElement = document.querySelector("#header");
+		myElement.style.backgroundColor = "rgba(0,0,0,0.8)";
+	</script>
+	<!-- Start home-aboutus Area -->
+	<link rel="stylesheet" href="{% static 'databreak2018/css/notification.css' %}">
+
+	<section id="notification" style="padding-top: 100px;">
+		<div class="whole-wrap">
+			<div class="container">
+			<div class="row d-flex justify-content-center">
+				<div class="menu-content pb-70 col-lg-8">
+					<div class="title text-center">
+						<h1 class="mb-10">Notifications</h1>
+						<p>공지사항은 수시로 업데이트됩니다</p>
+					</div>
+				</div>
+			</div>
+		<ul class="timeline">
+			{% for notification in notifications %}
+			<li>
+				<div class="avatar">
+          			<img src="{% static 'databreak2018/img/pacman-transparent.png' %}">
+					<div class="hover">
+						<div class="icon-twitter"></div>
+					</div>
+				</div>
+				<div class="bubble-container">
+					<div class="bubble">
+					<div class="retweet">
+						<div class="icon-retweet"></div>
+					</div>
+						<h3>{{ notification.upload_time }}</h3><br/>
+						{{ notification.notification }}
+						<div class="over-bubble">
+							<div class="icon-mail-reply action"></div>
+							<div class="icon-retweet action"></div>
+							<div class="icon-star"></div>
+						</div>
+					</div>
+
+					<div class="arrow"></div>
+				</div>
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+
+
+			</div>
+		</div>
+	</section>
+
+
+	<script src="{% static 'databreak2018/js/vendor/jquery-2.2.4.min.js' %}"></script>
+
+{% endblock %}

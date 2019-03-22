@@ -1,0 +1,45 @@
+{% extends 'website/databreak2018/base.html' %}
+{% load staticfiles %}
+{% block content %}
+	<script>
+		var myElement = document.querySelector("#header");
+		myElement.style.backgroundColor = "rgba(0,0,0,0.8)";
+	</script>
+	<!-- Start Personal sponsor Area -->
+	<section class="schedule-area pb-100" id="value" style="padding-top: 100px;">
+		<div class="container">
+			<div class="row d-flex justify-content-center">
+				<div class="menu-content pb-70 col-lg-8">
+					<div class="title text-center">
+						<h1 class="mb-10">개인 후원자</h1>
+						<p>개인 후원 티켓을 구입해 주신 감사한 분들</p>
+					</div>
+				</div>
+			</div>
+			<div>
+			{% for personal_sponsor in personal_sponsors %}
+				<div class="col-lg-10" style="display: inline-block; margin-bottom: 30px;">
+					{% if personal_sponsor.s__picture %}
+						<img class="personal_spon"
+							 style="width: 120px; float: left; margin-right: 20px;
+									border-radius: 60px; -moz-border-radius: 60px;
+									-khtml-border-radius: 60px; -webkit-border-radius: 60px;"
+							 src="/static/databreak2018/img/personal_sponsors/{{ personal_sponsor.s__picture }}">
+					{% else %}
+						<img class="personal_spon"
+							 style="width: 120px; float: left; margin-right: 20px;
+									border-radius: 60px; -moz-border-radius: 60px;
+									-khtml-border-radius: 60px; -webkit-border-radius: 60px;"
+							 src="/static/databreak2018/img/personal_sponsors/unknown.jpg">
+					{% endif %}
+					<h3>{{ personal_sponsor.s__name }}</h3>
+					<p style="word-break: break-all;">{{ personal_sponsor.s__introduction }}</p>
+				</div>
+			{% endfor %}
+			</div>
+		</div>
+	</section>
+
+	<script src="{% static 'databreak2018/js/vendor/jquery-2.2.4.min.js' %}"></script>
+
+{% endblock %}

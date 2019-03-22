@@ -1,6 +1,12 @@
 {% extends 'website/databreak2018/base.html' %}
 {% load staticfiles %}
 {% block content %}
+            <script src="{% static 'databreak2018/js/notify.js' %}"></script>
+            <script>
+				$.notify("갤러리 항목이 추가되었습니다!", "success");
+				$.notify("발표자료가 업로드 되었습니다!", "success");
+				$.notify("새로운 공지가 있습니다!", "success");
+			</script>
 			<!-- start banner Area -->
 			<section class="banner-area relative" id="banner">
 				<div class="overlay overlay-bg"></div>
@@ -13,7 +19,7 @@
 						<div class="banner-content col-lg-9 col-md-12">
 							<h6 class="main-info">캐글러와 데이터 과학자의 놀이터</h6>
 							<h1 class="text-white">
-								<img class="pacman_img" src="{% static '/static/databreak2018/img/pacman.png' %}">
+								<img class="pacman_img" src="{% static 'databreak2018/img/pacman.png' %}">
 								DataBreak 2018:
 								<span style="font-family: 'Share Tech Mono'; display: block;">Hello Kaggler!</span>
 							</h1>
@@ -21,7 +27,7 @@
 								<div id="timer" class="text-white"></div>
 							</div>
 							<h4 class="main-info"><span class="lnr lnr-calendar-full"></span>2018. 10. 7(Sun) 오전 10시 ~ 오후 6시 30분</h4>
-							<h4 class="main-info"><span class="lnr lnr-map"></span>마이크로소프트 광화문오피스 (K-twin 타워 11층)</h4>
+							<h4 class="main-info"><span class="lnr lnr-map"></span>마이크로소프트 광화문오피스 (K-twin 타워 A동 11층)</h4>
 						</div>											
 					</div>
 				</div>
@@ -36,7 +42,7 @@
 							<p class="top-title">무슨 행사인가요?</p>
 							<h1>DataBreak 2018
 								<img class="pacman_img" style="height: 32px;"
-									 src="{% static '/static/databreak2018/img/ghost_black.png' %}">
+									 src="{% static 'databreak2018/img/ghost_black.png' %}">
 							</h1>
 							<p><span>Data science를 쉽게 뽀개기 위한 오프라인 워크샵</span></p>
 							<p>
@@ -70,7 +76,7 @@
 						<div class="col-lg-4 no-padding about-right">
 							<p class="top-title">2018년의 주제가 무엇인가요?</p>
 							<h1 class="text-white">Hello Kaggler!
-								<img style="width: 32px;" src="{% static '/static/databreak2018/img/ghost.png' %}">
+								<img style="width: 32px;" src="{% static 'databreak2018/img/ghost.png' %}">
 							</h1>
 							<p><span>데이터 과학의 놀이터인 캐글을 알리고, 데이터 분석으로 가치를 낼 수 있는 인사이트를 이야기하는 자리</span></p>
 							<p>
@@ -98,11 +104,11 @@
 						<div class="menu-content pb-70 col-lg-8">
 							<div class="title text-center">
 								<h1 class="mb-10">우리의 발표자들</h1>
-								<p>좌우로 슬라이드하면 발표자를 보실 수 있습니다 (순서 랜덤)</p>
+								<p>아래 링크에서 공개가 허락된 발표자료를 다운로드할 수 있습니다.</p>
                                 <a href="/databreak2018/speakers"
                                    class="genric-btn primary circle arrow"
                                    target="_blank">
-                                    발표자 전체보기<span class="lnr lnr-arrow-right"></span>
+                                    발표 세션 전체보기(다운로드)<span class="lnr lnr-arrow-right"></span>
                                 </a>
 							</div>
 						</div>
@@ -161,6 +167,77 @@
 			<!-- End spekers Area -->
 			
 
+			<!-- Start Keynote speaker Area -->
+			<div class="title text-center" id="keynote" style="margin-top: 50px;">
+				<h1 class="mb-60">Keynote speaker</h1>
+			</div>
+			{% for pt in pts %}
+			<section id="speech">
+				<div class="whole-wrap mb-60">
+					<div class="container">
+						<div>
+							<p><b>KEYNOTE SPEAKER</b></p>
+							<h2 class="mb-30">"{{ pt.title }}"</h2>
+							<ul class="unordered-list">
+								<li><h3 class="mb-30">장소: Room A~C (전체)</h3></li>
+								<li><h3 class="mb-30">시간: {{ pt.s_time }}~{{ pt.e_time }}</h3></li>
+							</ul>
+							<div class="row">
+								<div class="col-md-3 mb-30">
+								{% ifnotequal pt.m__name "캐글뽀개기" %}
+									<img src={{ pt.m__picture }} alt="" class="img-fluid">
+								{% else %}
+									<img src="{% static 'databreak2018/img/about/poster_for_web.png' %}" class="img-fluid">
+								{% endifnotequal %}
+								</div>
+								<div class="col-md-9 mt-sm-20">
+									{% ifnotequal pt.m__name "캐글뽀개기" %}
+										<h2 class="mb-20 icon-right-padding" style="display: inline-block; float: left;">
+											<i class="fa fa-user-circle icon-right-padding" aria-hidden="true"></i>
+											발표자: {{ pt.m__name }}
+										</h2>
+										<ul>
+											{% for sp_c in pt.contacts %}
+												{% if sp_c.contact_type == 'email' %}
+													<a class="icon-circle"
+													   target="_blank" href=mailto:{{ sp_c.url }}
+													   style="margin: 5px 0 23px 0;">
+														<i class="fa fa-envelope-o"></i>
+													</a>
+												{% else %}
+													<a class="icon-circle"
+													   target="_blank" href={{ sp_c.url }}
+													   style="margin: 5px 0 23px 0;">
+														<i class="fa fa-{{ sp_c.contact_type }}"></i>
+													</a>
+												{% endif %}
+											{% endfor %}
+										</ul>
+										<h4 class="mb-30">
+											<i class="fa fa-id-card icon-right-padding" aria-hidden="true"></i>
+											{{ pt.m__affiliation }}</h4>
+										<h4 class="mb-30">
+											<i class="fa fa-commenting icon-right-padding" aria-hidden="true"></i>
+											관심분야: {{ pt.m__interest }}
+										</h4>
+									{% endifnotequal %}
+									<h4 class="mb-10">
+											<i class="fa fa-file-text icon-right-padding" aria-hidden="true"></i>
+											소개
+									</h4>
+									<p style="color: black;">
+										{{ pt.m__introduction }}
+									</p>
+									<blockquote class="generic-blockquote">"{{ pt.summary }}"</blockquote>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			{% endfor %}
+
+
 			<!-- Start schedule Area -->
 			<section class="schedule-area pb-100" id="schedule">
 				<div class="container">
@@ -168,7 +245,7 @@
 						<div class="menu-content pb-70 col-lg-8">
 							<div class="title text-center">
 								<h1 class="mb-10">Speech Schedule</h1>
-								<p>발표 스케쥴은 일부 조정될 수 있습니다 :)</p>
+								<p>혹시 스케쥴이 보이지 않으시면 Day <-> Agenda 뷰를 한번 클릭해주세요 :)</p>
 							</div>
 						</div>
 					</div>
@@ -235,6 +312,11 @@
 											  element.parent().css("width", w);
 											});
 										}
+										if (data.managing && data.roomId!=4){
+											setTimeout(() => {
+											  element.parent().css("background-color", 'darkgray');
+											});
+										}
 										return "item";
 									}
 								}, {
@@ -260,6 +342,6 @@
 				});
 			</script>
 			<script type="text/javascript"
-					src="{% static '/static/databreak2018/js/dx.all.js' %}"></script>
+					src="{% static 'databreak2018/js/dx.all.js' %}"></script>
 
 {% endblock %}

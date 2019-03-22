@@ -26,6 +26,11 @@ img.supporter {
     transform: translateY(-50%);
 }
 
+img.personal_spon {
+    width: 120px;
+    float: left;
+}
+
 .logo-wrap p {
     diaplay: inline-block;
 }
@@ -109,7 +114,4 @@ li.top-padding{
 
 #coc body{
     font-size: 20px;
-}
-#speech a{
-    color: inherit;
 }

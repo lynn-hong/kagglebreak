@@ -85,20 +85,27 @@
                         </div>
                         <nav id="nav-menu-container">
                             <ul class="nav-menu">
-                                <li class="menu-active"><a href="{% url 'databreak2018' %}#about">About</a></li>
-                                <li><a href="{% url 'coc' %}">CoC</a></li>
-                                <li><a href="{% url 'databreak2018' %}#speakers">Speakers</a></li>
+                                <li class="menu-has-children"><a href="#">About</a>
+                                <ul>
+                                    <li><a href="{% url 'databreak2018' %}#about">About</a></li>
+                                    <li><a href="{% url 'coc' %}">CoC</a></li>
+                                </ul>
+                                <li><a href="{% url 'notifications' %}">Notice</a></li>
+                                <li class="menu-has-children"><a href="#">Speakers</a>
+                                <ul>
+                                    <li><a href="{% url 'databreak2018' %}#speakers">All speakers(download)</a></li>
+                                    <li><a href="{% url 'databreak2018' %}#keynote">Keynote speakers</a></li>
+                                </ul>
                                 <li><a href="{% url 'databreak2018' %}#schedule">Schedule</a></li>
-                                <li>
-                                    <a onclick="alert('미니 분석대회는 곧 오픈됩니다! 조금만 기다려 주세요 :)')">Competition
-                                    </a>
-                                </li>
+                                <li><a href="https://www.kaggle.com/c/databreak-2018-hello-kaggler" target="_blank">Competition</a></li>
                                 <li class="menu-has-children"><a href="#">Supporters</a>
                                 <ul>
-                                    <li><a href="{% url 'databreak2018' %}#sponsors">Sponsors</a></li>
+                                    <li><a href="{% url 'databreak2018' %}#sponsors">Sponsors: 기업</a></li>
+                                    <li><a href="{% url 'spon_ticket' %}">Sponsors: 개인</a></li>
                                     <li><a href="{% url 'databreak2018' %}#supporters">Supporters</a></li>
                                     <li><a href="{% url 'sponsorship' %}">Sponsorship Guideline</a></li>
                                 </ul>
+                                <li><a href="{% url 'gallery' %}">Gallery</a></li>
                             </li>
                             <li><a class="ticker-btn" target="_blank"
                                    href="https://festa.io/events/87">Register</a></li>
@@ -182,8 +189,6 @@
             </section>
             <!-- End brand Area -->
 
-
-
             <!-- Start callaction Area -->
             <section class="callaction-area relative section-gap">
                 <div class="overlay overlay-bg"></div>
@@ -228,6 +233,9 @@
                                     <a target="_blank" href="{{ rep_contact.facebook }}">
                                         <i class="fa fa-facebook"></i>
                                     </a>
+                                    <a target="_blank" href="mailto:{{ rep_contact.email }}">
+                                        <i class="fa fa-envelope-o"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -236,11 +244,7 @@
             </footer>
             <!-- End footer Area -->
 
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' %}"
-                    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-                    crossorigin="anonymous"></script>
             <script src="{% static 'databreak2018/js/vendor/bootstrap.min.js' %}"></script>
-            <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
             <script src="{% static 'databreak2018/js/easing.min.js' %}"></script>
             <script src="{% static 'databreak2018/js/hoverIntent.js' %}"></script>
             <script src="{% static 'databreak2018/js/superfish.min.js' %}"></script>
@@ -252,7 +256,6 @@
             <script src="{% static 'databreak2018/js/parallax.min.js' %}"></script>
             <script src="{% static 'databreak2018/js/mail-script.js' %}"></script>
             <script src="{% static 'databreak2018/js/main.js' %}"></script>
-
         </body>
     </html>
 

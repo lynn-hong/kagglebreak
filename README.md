@@ -2,7 +2,7 @@
 
 ## DataBreak2018 workshop website
 - DataBreak2018 workshop을 위한 웹사이트 제작
-- [바로가기](kagglebreak.com/databreak2018)
+- [바로가기](http://kagglebreak.com/databreak2018)
 
 ## Project components
 ### Components

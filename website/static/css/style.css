@@ -1728,7 +1728,8 @@ i::before,i::after{
     /*Page Headers */
 /*-------------------------------*/
 .page-header {
-   background: url(../images/page-header.jpg) no-repeat;
+   background: url(../images/banner_about_detail.JPG) no-repeat;
+   background-color: rgba(0,0,0,0.5);
    background-position: center center;
    -webkit-background-size: cover;
    background-size: cover;
@@ -1884,6 +1885,7 @@ i::before,i::after{
 /*Process icoin inside*/
 .process-number.iconic {
    padding: 2.5rem 1rem;
+   word-wrap: break-word;
 }
 .process-number.iconic > span {
 	height: 90px;
@@ -2896,7 +2898,8 @@ i::before,i::after{
    background: url(../images/banner-fade.jpg)no-repeat;
 }
 .rotating-slider.studio-ver{
-   background: url(../images/studio_front_wallpaper.jpg)no-repeat;
+   background: url(../images/kagglebreak/landing_coffee3.jpg)no-repeat;
+   background-size: cover;
 }
 .ineractive-ver {
    background: url(../images/banner-interactive-agency.jpg)no-repeat;
@@ -3067,8 +3070,8 @@ iframe  {
 }
 .testimonial-wrapp .testimonial-photo,
 .testimonial-wrapp .testimonial-photo > img{
-    -webkit-border-radius: 50%;
-    border-radius: 50%;   
+    /*-webkit-border-radius: 50%;
+    border-radius: 50%;   */
 }
 #testimonial-slider .owl-item:nth-child(2n) .testimonial-wrapp .quoted,
 #testimonial-slider .owl-item:nth-child(2n) .testimonial-wrapp:hover .testimonial-text{

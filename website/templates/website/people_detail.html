@@ -1,0 +1,128 @@
+{% extends "website/base.html" %}
+{% load staticfiles %}
+
+{% block page_content %}
+
+<!--page Header-->
+<section class="page-header parallaxie padding_top center-block header-opacity"
+         style="padding-top: 4.5rem;
+                background: url({% static 'images/kagglebreak/detail_cooperation3.jpg' %}) no-repeat;
+                background-size: cover;">
+   <div class="container">
+      <div class="row">
+         <div class="col-sm-12">
+            <div class="page-titles text-center">
+               <h2 class="whitecolor font-light bottom30">Our People</h2>
+               <ul class="breadcrumb justify-content-center">
+                 <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                 <li class="breadcrumb-item active" aria-current="page">people</li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!--page Header ends-->
+
+
+<!-- Team Tables -->
+<section id="teams" class="padding">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-8 offset-md-2 col-sm-12 text-center">
+            <div class="heading-title wow fadeInUp" data-wow-delay="300ms">
+               <span>데이터뽀개기의 조직 구성과 역할</span>
+               <h2 class="darkcolor bottom30">Teams</h2>
+               <p>데이터뽀개기는 3개의 팀으로 구성되어 있습니다. 팀 간 서로 협력하여 운영됩니다</p>
+            </div>
+         </div>
+      </div>
+      <div class="row three-col-pricing">
+         {% for manager_type in manager_types %}
+            <div class="col-lg-4 col-sm-12">
+               <div class="price-table top60 wow fadeInUp" data-wow-delay="350ms">
+                  <h3 class="bottom20 darkcolor">Team {{ manager_type.name }}</h3>
+                  <p>{{ manager_type.desc }}</p>
+                  <!--<div class="ammount">
+                     <h2 class="defaultcolor">9.99 <span class="dur">/ month</span></h2>
+                  </div>-->
+                  <ul class="top20">
+                     {% for task in manager_type.task %}
+                        <li><span>{{ task }}</span></li>
+                     {% endfor %}
+                  </ul>
+               </div>
+            </div>
+         {% endfor %}
+      </div>
+   </div>
+</section>
+<!--Team Tables ends-->
+
+
+<!-- Our People-->
+<section id="people" class="padding bglight">
+ <div class="container">
+    <div class="row">
+       <div class="col-md-8 offset-md-2 col-sm-12 text-center">
+          <div class="heading-title wow fadeInUp" data-wow-delay="150ms">
+             <span>데이터뽀개기를 움직이는 사람들</span>
+             <h2 class="darkcolor bottom20">운영진 소개</h2>
+             <p class="bottom10">커뮤니티를 통해 데이터 현장의 문화를 개선하고 싶은 사람들. 여러분도 함께하실 수 있어요!</p>
+          </div>
+       </div>
+    </div>
+    {% for manager_type in manager_types %}
+    <div class="row">
+       <div class="col-md-8 offset-md-2 col-sm-12 text-center">
+          <div class="heading-title wow fadeInUp" data-wow-delay="150ms">
+             <h3 class="darkcolor bottom10" style="margin-top: 90px;">
+                Team <span style="color: #00bcd4;">{{ manager_type.name }}</span>
+             </h3>
+          </div>
+       </div>
+    </div>
+    <div class="row">
+       {% for manager in managers %}
+          {% if manager.staff_type == manager_type.name %}
+             <div class="col-lg-3 col-md-6">
+                <div class="team-box no-hover top60 wow fadeInUp" data-wow-delay="200ms">
+                   <div class="image">
+                      {% if 'http' in manager.picture %}
+                         <img src={{ manager.picture }} alt="{{ manager.name }}님의 사진">
+                      {% else %}
+                         <img src="{% static 'images/manager/'|add:manager.picture %}" alt="{{ manager.name }}님의 사진">
+                      {% endif %}
+                   </div>
+                   <div class="team-content gradient_bg">
+                   {% if manager.is_staff_leader %}
+                      <span style="color: #00bcd4;">Team leader</span>
+                   {% endif %}
+                      <h3>{{ manager.name }}({{ manager.nickname_eng }})</h3>
+                      <p>{{ manager.interest }}</p>
+                      <ul class="social-icons">
+                         {% for c in manager.contacts %}
+                            {% if c.contact_type == 'email' %}
+                               <li><a target='_blank' href=mailto:{{ c.url }}>
+                                   <i class="fa fa-envelope-o }}"></i></a></li>
+                            {% elif c.contact_type == 'website' %}
+                               <li><a target='_blank' href={{ c.url }}>
+                                   <i class="fa fa-internet-explorer"></i></a></li>
+                            {% else %}
+                               <li><a target='_blank' href={{ c.url }}>
+                                   <i class="fa fa-{{ c.contact_type }}"></i></a></li>
+                            {% endif %}
+                         {% endfor %}
+                      </ul>
+                   </div>
+                </div>
+             </div>
+          {% endif %}
+       {% endfor %}
+    </div>
+    {% endfor %}
+ </div>
+</section>
+<!-- Our Team ends-->
+
+{% endblock %}

@@ -1,0 +1,142 @@
+{% extends "website/base.html" %}
+{% load staticfiles %}
+{% load render_table from django_tables2 %}
+
+{% block page_content %}
+
+<script>
+   // http://stackoverflow.com/questions/37684/how-to-replace-plain-urls-with-links
+   function replaceURLWithHTMLLinks(text) {
+       var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+       return text.replace(exp,"<a href='$1' style='color: #007bff' target='_blank'>$1</a>");
+   }
+
+   window.onload = function(){
+     var elm =  document.getElementById("info");
+     var modifiedHtml = replaceURLWithHTMLLinks(elm.innerHTML);
+     elm.innerHTML = modifiedHtml ;
+   }
+</script>
+
+<!--page Header-->
+<section class="page-header parallaxie padding_top center-block header-opacity"
+         style="padding-top: 4.5rem;
+                background: url({% static '/images/kagglebreak/detail_study2.jpg' %}) no-repeat;
+                background-size: cover;">
+   <div class="container">
+      <div class="row">
+         <div class="col-sm-12">
+            <div class="page-titles text-center">
+               <h2 class="whitecolor font-light bottom30">[{{ activity.act_type }}] {{ activity.title }}</h2>
+               <ul class="breadcrumb justify-content-center">
+                 <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                 <li class="breadcrumb-item"><a href="{% url 'activity' %}#activities">Activity</a></li>
+                 <li class="breadcrumb-item active" aria-current="page">{{ activity.title }}</li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!--page Header ends-->
+
+<!-- Activity description -->
+<section id="our-process" class="bglight" style="padding-bottom: 50px;">
+   <div class="container">
+      <div class="row our-process" id="info">
+         {% if activity.leaders %}
+            <div class="col-lg-2 col-md-2">
+               <div class="process-number iconic top60 wow fadeInUp" data-wow-delay="150ms">
+                  <span class="fa fa-smile-o"></span>
+                   <h3 class="font-light darkcolor top20 bottom20">Leader</h3>
+                   <p>
+                       {% for l in activity.leaders %}
+                            <!-- {{ activity.leaders.name|join:", " }} -->
+                            <!-- <a href={{ l.fb }}>{{ l.name }}</a> -->
+                            {{ l.name }}
+                       {% endfor %}
+                   </p>
+                </div>
+            </div>
+         {% endif %}
+         {% if activity.get_interval_display %}
+         <div class="col-lg-2 col-md-2">
+           <div class="process-number iconic top60 wow fadeInUp" data-wow-delay="150ms">
+               <span class="fa fa-calendar"></span>
+               <h3 class="font-light darkcolor top20 bottom20">Interval</h3>
+               <p>{{ activity.get_interval_display }}
+                   {% if activity.get_level_display %}
+                        {{ activity.get_day_display }}
+                   {% endif %}
+               </p>
+            </div>
+         </div>
+         {% endif %}
+         {% if activity.goal %}
+         <div class="col-lg-3 col-md-3">
+           <div class="process-number iconic top60 wow fadeInUp" data-wow-delay="150ms">
+               <span class="fa fa-map-signs"></span>
+               <h3 class="font-light darkcolor top20 bottom20">Goal</h3>
+               <p>{{ activity.goal }}</p>
+               {% if activity.get_level_display %}
+                    <p>Level: {{ activity.get_level_display }}</p>
+               {% endif %}
+            </div>
+         </div>
+         {% endif %}
+         {% if activity.num_of_people %}
+         <div class="col-lg-2 col-md-2">
+           <div class="process-number iconic top60 wow fadeInUp" data-wow-delay="150ms">
+               <span class="fa fa-users"></span>
+               <h3 class="font-light darkcolor top20 bottom20">Num of people</h3>
+               <p>{{ activity.num_of_people }}</p>
+            </div>
+         </div>
+         {% endif %}
+         {% if activity.curriculum %}
+         <div class="col-lg-3 col-md-3">
+           <div class="process-number iconic top60 wow fadeInUp" data-wow-delay="150ms">
+               <span class="fa fa-book"></span>
+               <h3 class="font-light darkcolor top20 bottom20">curriculum</h3>
+               <p>{{ activity.curriculum|linebreaksbr }}</p>
+            </div>
+         </div>
+         {% endif %}
+         {% if activity.summary %}
+         <div class="col-lg-6 col-md-6">
+           <div class="process-number iconic top60 wow fadeInUp" data-wow-delay="150ms">
+               <span class="fa fa-graduation-cap"></span>
+               <h3 class="font-light darkcolor top20 bottom20">Summary</h3>
+               <p>{{ activity.summary|linebreaksbr }}</p>
+            </div>
+         </div>
+         {% endif %}
+         {% if activity.textbook %}
+         <div class="col-lg-6 col-md-6">
+           <div class="process-number iconic top60 wow fadeInUp" data-wow-delay="150ms">
+               <span class="fa fa-book"></span>
+               <h3 class="font-light darkcolor top20 bottom20">textbook</h3>
+               <p>{{ activity.textbook|linebreaksbr }}</p>
+            </div>
+         </div>
+         {% endif %}
+
+      </div>
+   </div>
+</section>
+<!-- Activity description -->
+
+<!--
+<section class="parallaxie padding_top center-block header-opacity">
+   <div class="container">
+      <div class="row">
+         <div class="col-sm-12">
+            {% render_table events %}
+         </div>
+      </div>
+   </div>
+</section>
+-->
+
+
+{% endblock %}

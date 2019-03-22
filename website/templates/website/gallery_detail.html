@@ -1,0 +1,154 @@
+{% extends "website/base.html" %}
+{% load staticfiles %}
+
+{% block page_content %}
+
+<!--page Header-->
+<section class="page-header parallaxie padding_top center-block">
+   <div class="container">
+      <div class="row">
+         <div class="col-sm-12">
+            <div class="page-titles text-center">
+               <h2 class="whitecolor font-light bottom30">Creative Work</h2>
+               <ul class="breadcrumb justify-content-center">
+                 <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                 <li class="breadcrumb-item active" aria-current="page">Creative Work</li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!--page Header ends-->
+
+
+<!--Gallery-->
+<section id="portfolio-xe" class="bglight padding">
+   <div class="container">
+    <div class="row">
+         <div class="col-md-8 offset-md-2 col-sm-12 text-center">
+            <div id="flat-filters" class="cbp-l-filters dark bottom30">
+               <div data-filter="*" class="cbp-filter-item">
+                  <span>All</span>
+               </div>
+               <div data-filter=".web" class="cbp-filter-item">
+                  <span>web</span>
+               </div>
+               <div data-filter=".print" class="cbp-filter-item">
+                  <span>Print</span>
+               </div>
+               <div data-filter=".graphic" class="cbp-filter-item">
+                  <span>Graphic</span>
+               </div>
+               <div data-filter=".logo" class="cbp-filter-item">
+                  <span>Logo</span>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="flat-gallery" class="cbp">
+         <div class="cbp-item web logo">
+            <img src="{% static 'images/gallery-flat1.jpg' %}" alt="">
+            <div class="overlay center-block whitecolor">
+               <a class="plus" data-fancybox="gallery" href="{% static 'images/gallery-flat1.jpg' %}"></a>
+               <h4 class="top30">Wood Work</h4>
+               <p>Small Portfolio Detail Here</p>
+            </div>
+         </div>
+         <div class="cbp-item graphic print">
+            <img src="{% static 'images/gallery-flat2.jpg' %}" alt="">
+            <div class="overlay center-block whitecolor">
+               <a class="plus" data-fancybox="gallery" href="{% static 'images/gallery-flat2.jpg' %}"></a>
+               <h4 class="top30">Wood Work</h4>
+               <p>Small Portfolio Detail Here</p>
+            </div>
+         </div>
+         <div class="cbp-item logo graphic">
+            <img src="{% static 'images/gallery-flat3.jpg' %}" alt="">
+            <div class="overlay center-block whitecolor">
+               <a class="plus" data-fancybox="gallery" href="https://www.youtube.com/watch?v=_sI_Ps7JSEk&autoplay=1&rel=0&controls=0&showinfo=0"></a>
+               <h4 class="top30">Wood Work</h4>
+               <p>Small Portfolio Detail Here</p>
+            </div>
+         </div>
+         <div class="cbp-item print">
+            <img src="{% static 'images/gallery-flat4.jpg' %}" alt="">
+            <div class="overlay center-block whitecolor">
+               <a class="plus" data-fancybox="gallery" href="{% static 'images/gallery-flat4.jpg' %}"></a>
+               <h4 class="top30">Wood Work</h4>
+               <p>Small Portfolio Detail Here</p>
+            </div>
+         </div>
+         <div class="cbp-item logo">
+            <img src="{% static 'images/gallery-flat5.jpg' %}" alt="">
+            <div class="overlay center-block whitecolor">
+               <a class="plus" data-fancybox="gallery" href="{% static 'images/gallery-flat5.jpg' %}"></a>
+               <h4 class="top30">Wood Work</h4>
+               <p>Small Portfolio Detail Here</p>
+            </div>
+         </div>
+         <div class="cbp-item web print graphic">
+            <img src="{% static 'images/gallery-flat6.jpg' %}" alt="">
+            <div class="overlay center-block whitecolor">
+               <a class="plus" data-fancybox="gallery" href="{% static 'images/gallery-flat6.jpg' %}"></a>
+               <h4 class="top30">Wood Work</h4>
+               <p>Small Portfolio Detail Here</p>
+            </div>
+         </div>
+         <div class="cbp-item web logo">
+            <img src="{% static 'images/gallery-flat1.jpg' %}" alt="">
+            <div class="overlay center-block whitecolor">
+               <a class="plus" data-fancybox="gallery" href="{% static 'images/gallery-flat1.jpg' %}"></a>
+               <h4 class="top30">Wood Work</h4>
+               <p>Small Portfolio Detail Here</p>
+            </div>
+         </div>
+         <div class="cbp-item graphic print">
+            <img src="{% static 'images/gallery-flat2.jpg' %}" alt="">
+            <div class="overlay center-block whitecolor">
+               <a class="plus" data-fancybox="gallery" href="{% static 'images/gallery-flat2.jpg' %}"></a>
+               <h4 class="top30">Wood Work</h4>
+               <p>Small Portfolio Detail Here</p>
+            </div>
+         </div>
+         <div class="cbp-item logo graphic">
+            <img src="{% static 'images/gallery-flat3.jpg' %}" alt="">
+            <div class="overlay center-block whitecolor">
+               <a class="plus" data-fancybox="gallery" href="https://www.youtube.com/watch?v=_sI_Ps7JSEk&autoplay=1&rel=0&controls=0&showinfo=0"></a>
+               <h4 class="top30">Wood Work</h4>
+               <p>Small Portfolio Detail Here</p>
+            </div>
+         </div>
+         <div class="cbp-item print">
+            <img src="{% static 'images/gallery-flat4.jpg' %}" alt="">
+            <div class="overlay center-block whitecolor">
+               <a class="plus" data-fancybox="gallery" href="{% static 'images/gallery-flat4.jpg' %}"></a>
+               <h4 class="top30">Wood Work</h4>
+               <p>Small Portfolio Detail Here</p>
+            </div>
+         </div>
+         <div class="cbp-item logo">
+            <img src="{% static 'images/gallery-flat5.jpg' %}" alt="">
+            <div class="overlay center-block whitecolor">
+               <a class="plus" data-fancybox="gallery" href="{% static 'images/gallery-flat5.jpg' %}"></a>
+               <h4 class="top30">Wood Work</h4>
+               <p>Small Portfolio Detail Here</p>
+            </div>
+         </div>
+         <div class="cbp-item web print graphic">
+            <img src="{% static 'images/gallery-flat6.jpg' %}" alt="">
+            <div class="overlay center-block whitecolor">
+               <a class="plus" data-fancybox="gallery" href="{% static 'images/gallery-flat6.jpg' %}"></a>
+               <h4 class="top30">Wood Work</h4>
+               <p>Small Portfolio Detail Here</p>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!--Gallery ends -->   
+                        
+
+
+
+{% endblock %}

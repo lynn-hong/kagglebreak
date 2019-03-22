@@ -1,0 +1,125 @@
+{% extends "website/base.html" %}
+{% load staticfiles %}
+
+{% block page_content %}
+    <!--Main Slider-->
+    <div class="rotating-slider studio-ver padding_top full-screen center-block header-opacity" id="home">
+       <div class="container">
+          <div class="row padding_half">
+             <div class="col-md-12">
+                <div id="text-fading" class="owl-carousel text-center">
+                   {% for home in homes %}
+                   <div class="item bottom30">
+                      <h2 class="text-capitalize font-xlight whitecolor">
+                         <span class="d-block">{{ home.top }}</span>
+                         <span class="d-block fontbold">{{ home.middle }}</span>
+                         <span class="d-block font-xlight">{{ home.bottom }}</span>
+                      </h2>
+                      <a class="button btnsecondary top40" target="_blank" href="{{ home.button_url }}">
+                         {{ home.button_title }}</a>
+                   </div>
+                   {% endfor %}
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+    <!--Main Slider ends -->
+
+    <!--About simple -->
+    <section class="padding single-feature">
+       <div class="container">
+          <div class="row">
+             <div class="col-md-6 col-sm-7 text-md-left text-center wow fadeInLeft" data-wow-delay="150ms">
+                <div class="heading-title heading_space">
+                   <span style="font-family: 'Do Hyeon';">{{ about.sub_title }}</span>
+                   <h2 class="darkcolor bottom30">{{ about.title }}</h2>
+                </div>
+                <p class="bottom35">{{ about.content }}</p>
+                <a href="{% url 'about' %}" target="_blank" class="button btnsecondary pagescroll">GO TO ABOUT PAGE</a>
+             </div>
+             <div class="col-md-6 col-sm-5 wow fadeInRight" data-wow-delay="200ms">
+                <div class="image top50"><img alt="SEO" src="{% static 'images/kagglebreak/study.jpg' %}"></div>
+             </div>
+          </div>
+       </div>
+    </section>
+
+
+   <!--people&activity intro section-->
+    <section id="our-apps" class="bg-apps padding header-opacity"
+                style="background: url({% static 'images/kagglebreak/event1.JPG' %}) no-repeat;
+                       background-attachment: fixed;
+                       background-position: center center;
+                       -webkit-background-size: cover;
+                       background-size: cover;">
+       <div class="container">
+          <div class="row">
+             <div class="col-md-12 col-sm-12 text-center">
+                <div class="heading-title wow fadeInUp" data-wow-delay="400ms">
+                   <span>데이터뽀개기의 다양한 활동들</span>
+                   <h2 class="whitecolor bottom40">활동 & 운영진</h2>
+                   <p class="whitecolor bottom10">
+                       데이터뽀개기는 비영리 단체로, 운영진과 서포터들의 자발적인 도움으로 운영됩니다.
+                       우리 그룹을 움직이는 운영진들과 팀 소개를 보고 싶다면 아래 'OUR PEOPLE'를 눌러주세요!</p>
+                   <p class="whitecolor bottom40">
+                        스터디, 밋업(meet-up), 온라인 컨텐츠 생산, 대학생 멘토링 등 데이터뽀개기의 다양한 활동을 알아보고 싶다면
+                        아래 'ACTIVITIES'를 눌러주세요!</p>
+                   <a class="button btnwhite top10" href="{% url 'people' %}">OUR PEOPLE <i class="fa fa-group"></i></a> &nbsp;
+                   <a class="button btnwhite top10" href="{% url 'activity' %}">ACTIVITIES <i class="fa fa-lightbulb-o"></i></a>
+                </div>
+             </div>
+          </div>
+       </div>
+    </section>
+    <!--people&activity section ends-->
+
+
+
+
+
+    <!-- Counters -->
+    <section id="funfacts" class="padding_top fact-iconic gradient_bg">
+       <div class="container">
+          <div class="row">
+             <div class="col-md-5 col-sm-12 margin_bottom whitecolor text-md-left text-center wow fadeInUp" data-wow-delay="150ms">
+                <h3 class="bottom25">숫자로 보는 데이터뽀개기</h3>
+                <p class="title">많은 이들과 함께 지내온 날들을 기억합니다, 더 많은 이들과 만들어갈 날들을 기대합니다</p>
+             </div>
+             <div class="col-md-7 col-sm-12 text-center">
+                <div class="row">
+                   <div class="col-md-4 col-sm-4 icon-counters whitecolor margin_bottom  wow fadeIn" data-wow-delay="200ms">
+                      <div class="img-icon bottom15">
+                         <i class="fa fa-smile-o"></i>
+                      </div>
+                      <div class="counters">
+                         <span class="count_nums" data-to="28" data-speed="2500"> </span> <i class="fa fa-plus"></i>
+                      </div>
+                      <p class="title">참여했던 대회 수</p>
+                   </div>
+                   <div class="col-md-4 col-sm-4 icon-counters whitecolor margin_bottom wow fadeIn" data-wow-delay="250ms">
+                      <div class="img-icon bottom15">
+                         <i class="fa fa-language"> </i>
+                      </div>
+                      <div class="counters">
+                         <span class="count_nums" data-to="1214" data-speed="2500"> </span> <i class="fa fa-plus"></i>
+                      </div>
+                      <p class="title">2015년부터 지금까지</p>
+                   </div>
+                   <div class="col-md-4 col-sm-4 icon-counters whitecolor margin_bottom wow fadeIn" data-wow-delay="300ms">
+                      <div class="img-icon bottom15">
+                         <i class="fa fa-desktop"></i>
+                      </div>
+                      <div class="counters">
+                         <span class="count_nums" data-to="3088" data-speed="2500"> </span> <i class="fa fa-plus"></i>
+                      </div>
+                      <p class="title">페이스북 그룹 멤버 수</p>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </section>
+    <!--Counters ends-->
+
+{% endblock %}

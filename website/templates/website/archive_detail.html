@@ -1,0 +1,92 @@
+{% extends "website/base.html" %}
+{% load staticfiles %}
+
+{% block page_content %}
+
+<!--page Header-->
+<section class="page-header parallaxie padding_top center-block header-opacity"
+         style="padding-top: 4.5rem;
+                background: url({% static 'images/kagglebreak/detail_camera2.jpg' %}) no-repeat;
+                background-size: cover;">
+   <div class="container">
+      <div class="row">
+         <div class="col-sm-12">
+            <div class="page-titles text-center">
+               <h2 class="whitecolor font-light bottom30">Archive</h2>
+               <ul class="breadcrumb justify-content-center">
+                 <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                 <li class="breadcrumb-item active" aria-current="page">Archive</li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!--page Header ends-->
+
+
+
+    <!--events section-->
+    <section id="events" class="half-section">
+       <div class="container-fluid">
+          <div class="row">
+             <div class="col-md-6 nopadding">
+                <div class="split-box text-center center-block container-padding equalheight">
+                   <div class="heading-title padding">
+                   <span style="font-family: 'Do Hyeon'">캐글러와 데이터 과학자의 놀이터</span>
+                   <h2 class="darkcolor bottom20 wow fadeIn" data-wow-delay="150ms">
+                       DataBreak 2018: Hello Kaggler!</h2>
+                   <p class="heading_space wow fadeIn" data-wow-delay="250ms">
+                       데이터 과학을 쉽게 입문할 수 있는 캐글을 알리고,
+                       데이터 과학에 관심있는 다양한 사람들과 만나 서로의 지식 경험을 공유하는 자리</p>
+                   <a target="_blank" href="{% url 'databreak2018' %}"
+                      class="button btnprimary wow fadeInUp" data-wow-delay="300ms">
+                       Go event page</a>
+                </div>
+                </div>
+             </div>
+             <div class="col-md-6 nopadding">
+                <div class="image hover-effect img-container">
+                   <img alt="" src="{% static 'images/poster_for_web.png' %}" class="equalheight">
+                </div>
+             </div>
+          </div>
+       </div>
+    </section>
+    <!--events section ends-->
+
+<!-- Competitions -->
+<section id="people" class="padding bglight">
+ <div class="container">
+    <div class="row">
+       <div class="col-md-8 offset-md-2 col-sm-12 text-center">
+          <div class="heading-title wow fadeInUp" data-wow-delay="150ms">
+             <span>데이터뽀개기가 참여했던 kaggle 대회들입니다</span>
+             <h2 class="darkcolor bottom30">지난 참여 기록</h2>
+          </div>
+       </div>
+    </div>
+    <div class="row">
+       <div class="col-md-8 offset-md-2 col-sm-12">
+          <table id="competition_table" class="bottom30 wow fadeInLeft" data-wow-delay="100ms">
+             <tr>
+                <th>Title</th>
+                <th>Kaggle page</th>
+                <th>Github</th>
+             </tr>
+             {% for com in competitions %}
+             <tr>
+                <td>{{ com.title }}</td>
+                <td><a href="{{ com.url }}" target="_blank">url</a></td>
+                <td><a href="{{ com.github_url }}" target="_blank"><i class="fa fa-github"></i></a></td>
+             </tr>
+             {% endfor %}
+          </table>
+       </div>
+    </div>
+ </div>
+</section>
+<!-- Competitions ends-->
+
+
+{% endblock %}

@@ -1,0 +1,329 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>DataBreak</title>
+<link href="{% static 'images/favicon_d.ico' %}" rel="icon">
+
+<!--Plugins css-->
+<link rel="stylesheet" href="{% static 'css/plugins.css' %}">
+
+<!--Custom Styles-->
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link href="https://fonts.googleapis.com/css?family=Do+Hyeon:100,200,400,300,500,600,700" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/my.css' %}">
+<link rel="stylesheet" media="(min-width: 1000px)" href="{% static 'css/my_mobile.css' %}">
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="90">
+
+
+
+<!--PreLoader-->
+<div class="loader">
+   <div class="loader-inner">
+      <div class="loader-blocks">
+         <span class="block-1"></span>
+         <span class="block-2"></span>
+         <span class="block-3"></span>
+         <span class="block-4"></span>
+         <span class="block-5"></span>
+         <span class="block-6"></span>
+         <span class="block-7"></span>
+         <span class="block-8"></span>
+         <span class="block-9"></span>
+         <span class="block-10"></span>
+         <span class="block-11"></span>
+         <span class="block-12"></span>
+         <span class="block-13"></span>
+         <span class="block-14"></span>
+         <span class="block-15"></span>
+         <span class="block-16"></span>
+      </div>
+   </div>
+</div>
+<!--PreLoader Ends-->
+
+<!-- header -->
+<header class="site-header">
+   <nav class="navbar navbar-expand-lg transparent-bg static-nav">
+      <div class="container">
+         <a class="navbar-brand" href="{% url 'index' %}">
+         <img src="{% static 'images/logo_databreak_transparent.png' %}" alt="logo">
+         </a>
+         <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse"
+                 data-target="#xenav">
+            <span> </span>
+            <span> </span>
+            <span> </span>
+         </button>
+         <div class="collapse navbar-collapse" id="xenav">
+            <ul class="navbar-nav ml-auto">
+               <li class="nav-item active">
+                  <a class="nav-link" href="{% url 'about' %}">
+                     <i class="fa fa-info-circle"></i> About
+                  </a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="{% url 'people' %}">
+                     <i class="fa fa-users"></i> People
+                  </a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="{% url 'activity' %}">
+                     <i class="fa fa-calendar"></i> Activities
+                  </a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="{% url 'archive' %}">
+                     <i class="fa fa-archive"></i> Archive
+                  </a>
+               </li>
+            </ul>
+         </div>
+         
+         <!--Social Icons-->
+         <ul class="social-icons white d-md-none">
+            <li><a target="_blank" href="{{ rep_contact.facebook }}"><i class="fa fa-facebook"></i> </a> </li>
+            <li><a target="_blank" href="{{ rep_contact.slack }}"><i class="fa fa-slack"></i> </a> </li>
+            <li><a target="_blank" href="mailto:{{ rep_contact.email }}"><i class="fa fa-envelope-o"></i> </a> </li>
+         </ul>
+      </div>
+
+      <!--side menu open button-->
+      <a href="javascript:void(0)" class="d-none d-lg-inline-block sidemenu_btn" id="sidemenu_toggle">
+          <span></span> <span></span> <span></span>
+       </a>
+   </nav>
+
+   <!-- side menu -->
+   <div class="side-menu">
+      <div class="inner-wrapper">
+         <span class="btn-close" id="btn_sideNavClose"><i></i><i></i></span>
+         <nav class="side-nav">
+            <ul class="navbar-nav w-100">
+               <li class="nav-item active">
+                  <a class="nav-link" href="{% url 'about' %}">About</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="{% url 'people' %}">People</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="{% url 'activity' %}">Activities</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="{% url 'archive' %}">Archive</a>
+               </li>
+            </ul>
+         </nav>
+
+         <div class="side-footer w-100">
+            <ul class="social-icons-simple white top40">
+                {% for c_type, c_info in rep_contact.items %}
+                    {% if c_type == 'email' %}
+                        <li><a target="_blank" href="mailto:{{ c_info }}"><i class="fa fa-envelope-o"></i> </a> </li>
+                    {% else %}
+                        <li><a target="_blank" href="{{ c_info }}"><i class="fa fa-{{ c_type }}"></i> </a> </li>
+                    {% endif %}
+                {% endfor %}
+         </ul>
+         <script type="text/javascript">
+           var date=new Date(),
+             year = date.getFullYear(),
+             text = "&copy; " + year + " DataBreak. Made by Lynn Hong",
+             html = '<p class="whitecolor">' + text + '</p>';
+           document.write(html);
+         </script>
+
+         </div>
+      </div>
+   </div>
+   <a id="close_side_menu" href="javascript:void(0);"></a>
+   <!-- End side menu -->
+</header>
+<!-- header -->
+
+{% block page_content %}
+{% endblock %}
+
+
+<!-- Supporters -->
+<section id="supporters" class="padding">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12 col-sm-12 text-center">
+            <div class="heading-title bottom30 wow fadeInUp" data-wow-delay="150ms">
+               <span>활동에 도움을 주시는 분들</span>
+               <h2 class="darkcolor">Sponsors</h2>
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-md-12 col-sm-12">
+            <div id="testimonial-slider" class="owl-carousel">
+               {% for sponsor in sponsors %}
+               <div class="item">
+                  <div class="testimonial-wrapp">
+                     <span class="quoted"><i class="fa fa-users"></i></span>
+                     <a href={{ sponsor.website }} target="_blank">
+                        <div class="testimonial-text">
+                           <p class="bottom40">{{ sponsor.introduction }}</p>
+                        </div>
+                     </a>
+                     <div class="testimonial-photo">
+                         {% with sponsor.picture as image_static %}
+                         <img alt="" src="{% static image_static %}"></div>
+                         {% endwith %}
+                     <h4 class="darkcolor">{{ sponsor.name }}</h4>
+                     <small class="defaultcolor">{{ sponsor.interest }}</small>
+                  </div>
+               </div>
+               {% endfor %}
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!--supporters Ends-->
+
+
+<!-- Contact US -->  
+<section id="contactus" class="padding_top bglight">
+   <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-sm-6">
+           <div class="heading-title heading_space wow fadeInUp" data-wow-delay="150ms">
+               <span>Lets Get In Touch</span>
+               <h2 class="darkcolor">Contact DataBreak</h2>
+            </div>
+        </div>
+         <div class="col-md-6 col-sm-12 margin_bottom wow fadeInUp" data-wow-delay="200ms">
+            <p>If you have any inquiries, please contact us :)</p>
+            <div class="row">
+               <div class="col-md-6 col-sm-6 our-address top40">
+                  <h5 class="bottom25">Facebook</h5>
+                  <p class="bottom15" style="word-wrap: break-word">{{ rep_contact.facebook }}</p>
+                  <a class="pickus" target="_blank" href="{{ rep_contact.facebook }}" data-text="Go to facebook">
+                     Go to Facebook
+                  </a>
+               </div>
+               <div class="col-md-6 col-sm-6 our-address top40">
+                  <h5 class="bottom25">Email</h5>
+                  <p class="bottom15">Main Email : {{ rep_contact.email }} <span class="block"></span> </p>
+                  <a class="pickus" href="mailto:{{ rep_contact.email }}" data-text="Send a Message">Send a Message</a>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   
+<!--Location Map here-->
+<!--<div id="map-container"></div>  -->
+</section>
+<!--Contact US Ends-->                    
+      
+<!--Site Footer Here-->
+<footer id="site-footer" class="padding_half">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12 col-sm-12 text-center">
+            <ul class="social-icons bottom25 wow fadeInUp" data-wow-delay="150ms">
+                {% for c_type, c_info in rep_contact.items %}
+                    {% if c_type == 'email' %}
+                        <li><a target="_blank" href="mailto:{{ c_info }}"><i class="fa fa-envelope-o"></i> </a> </li>
+                    {% else %}
+                        <li><a target="_blank" href={{ c_info }}><i class="fa fa-{{ c_type }}"></i></a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <script type="text/javascript">
+            var date=new Date(),
+              year = date.getFullYear(),
+              text = "All Rights Reserved. &copy; " + year + " DataBreak. Made by Lynn Hong",
+              html = '<p class="copyrights wow fadeInUp" data-wow-delay="200ms">' + text + '</p>';
+            document.write(html);
+            </script>
+         </div>
+      </div>
+   </div>
+</footer>
+<!--Footer ends-->   
+
+
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+
+{% block additional_resources %}
+{% endblock %}
+
+<!--Bootstrap Core-->
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+<!--to view items on reach-->
+<script src="{% static 'js/jquery.appear.js' %}"></script>
+
+<!--Equal-Heights-->
+<script src="{% static 'js/jquery.matchHeight-min.js' %}"></script>
+
+<!--Owl Slider-->
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+
+<!--number counters-->
+<script src="{% static 'js/jquery-countTo.js' %}"></script>
+ 
+<!--Parallax Background-->
+<script src="{% static 'js/parallaxie.js' %}"></script>
+  
+<!--Cubefolio Gallery-->
+<script src="{% static 'js/jquery.cubeportfolio.min.js' %}"></script>
+
+<!--FancyBox popup-->
+<script src="{% static 'js/jquery.fancybox.min.js' %}"></script>
+
+<!-- Video Background-->
+<script src="{% static 'js/jquery.background-video.js' %}"></script>
+
+<!--TypeWriter-->
+<script src="{% static 'js/typewriter.js' %}"></script>
+      
+<!--Particles-->
+<script src="{% static 'js/particles.min.js' %}"></script>
+        
+<!--WOw animations-->
+<script src="{% static 'js/wow.min.js' %}"></script>
+            
+<!--Revolution SLider-->
+<script src="{% static 'js/revolution/jquery.themepunch.tools.min.js' %}"></script>
+<script src="{% static 'js/revolution/jquery.themepunch.revolution.min.js' %}"></script>
+<!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
+<script src="{% static 'js/revolution/extensions/revolution.extension.actions.min.js' %}"></script>
+<script src="{% static 'js/revolution/extensions/revolution.extension.carousel.min.js' %}"></script>
+<script src="{% static 'js/revolution/extensions/revolution.extension.kenburn.min.js' %}"></script>
+<script src="{% static 'js/revolution/extensions/revolution.extension.layeranimation.min.js' %}"></script>
+<script src="{% static 'js/revolution/extensions/revolution.extension.migration.min.js' %}"></script>
+<script src="{% static 'js/revolution/extensions/revolution.extension.navigation.min.js' %}"></script>
+<script src="{% static 'js/revolution/extensions/revolution.extension.parallax.min.js' %}"></script>
+<script src="{% static 'js/revolution/extensions/revolution.extension.slideanims.min.js' %}"></script>
+<script src="{% static 'js/revolution/extensions/revolution.extension.video.min.js' %}"></script>
+
+<!--Google Map API
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_egfOLjahHB0IWpykRZrVFD8fN4JMgmw"></script>-->
+<script src="{% static 'js/functions.js' %}"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-136228704-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-136228704-1');
+</script>
+
+
+</body>
+</html>

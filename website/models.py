@@ -99,6 +99,7 @@ SPON_LEVEL = (
 )
 
 class Home(models.Model):
+    order = models.IntegerField(default=None)
     top = models.CharField(max_length=255, blank=True, null=True)
     middle = models.CharField(max_length=255, blank=True, null=True)
     bottom = models.CharField(max_length=255, blank=True, null=True)

@@ -109,7 +109,7 @@ class PresentationAdmin(admin.ModelAdmin):
 
 @admin.register(Home)
 class HomeAdmin(admin.ModelAdmin):
-    list_display = ['top', 'middle', 'bottom', 'button_title', 'button_url']
+    list_display = ['order', 'top', 'middle', 'bottom', 'button_title', 'button_url']
     formfield_overrides = {
         models.CharField: {'widget': TextInput(attrs={'size': textinput_width})},
     }

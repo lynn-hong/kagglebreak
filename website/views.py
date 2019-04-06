@@ -97,7 +97,6 @@ def get_coc():
             coc_right.append(coc)
     return coc_left, coc_right
 
-
 def get_manager():
     managers = Member.objects.all().filter(type=1).values()
     for m in managers:
@@ -117,7 +116,7 @@ class Index(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(Index, self).get_context_data(**kwargs)
 
-        context['homes'] = Home.objects.all()
+        context['homes'] = Home.objects.all().order_by('order')
         context['about'] = About.objects.first()
         context['rep_contact'] = get_rep_contact()
         context['sponsors'] = get_default_sponsor()
@@ -204,6 +203,16 @@ class IndexArchive(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(IndexArchive, self).get_context_data(**kwargs)
+        context['competitions'] = Competition.objects.all()
+        context['sponsors'] = get_default_sponsor()
+        context['rep_contact'] = get_rep_contact()
+        return context
+
+class IndexSponsor(TemplateView):
+    template_name = 'website/sponsor_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(IndexSponsor, self).get_context_data(**kwargs)
         context['competitions'] = Competition.objects.all()
         context['sponsors'] = get_default_sponsor()
         context['rep_contact'] = get_rep_contact()

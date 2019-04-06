@@ -4,6 +4,7 @@
 <head>
 <!-- Required meta tags -->
 <meta charset="utf-8">
+<meta property="og:image" content="{% static 'images/2019_kaggledays_meetup/kaggledays_홈페이지용.png' %}">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>DataBreak</title>
 <link href="{% static 'images/favicon_d.ico' %}" rel="icon">
@@ -67,19 +68,16 @@
                   </a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'people' %}">
-                     <i class="fa fa-users"></i> People
-                  </a>
+                  <a class="nav-link" href="{% url 'people' %}">People</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'activity' %}">
-                     <i class="fa fa-calendar"></i> Activities
-                  </a>
+                  <a class="nav-link" href="{% url 'activity' %}">Activities</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'archive' %}">
-                     <i class="fa fa-archive"></i> Archive
-                  </a>
+                  <a class="nav-link" href="{% url 'archive' %}">Archive</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="{% url 'sponsor' %}">Sponsorship</a>
                </li>
             </ul>
          </div>
@@ -116,6 +114,9 @@
                <li class="nav-item">
                   <a class="nav-link" href="{% url 'archive' %}">Archive</a>
                </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="{% url 'sponsor' %}">Sponsorship</a>
+               </li>
             </ul>
          </nav>
 
@@ -132,7 +133,8 @@
          <script type="text/javascript">
            var date=new Date(),
              year = date.getFullYear(),
-             text = "&copy; " + year + " DataBreak. Made by Lynn Hong",
+             text = "&copy; " + year + " DataBreak. " +
+                 "Made by <a href='https://www.facebook.com/sulynhong' target='_blank' style='color: #00bcd4;'>Lynn Hong</a>",
              html = '<p class="whitecolor">' + text + '</p>';
            document.write(html);
          </script>
@@ -211,7 +213,7 @@
                </div>
                <div class="col-md-6 col-sm-6 our-address top40">
                   <h5 class="bottom25">Email</h5>
-                  <p class="bottom15">Main Email : {{ rep_contact.email }} <span class="block"></span> </p>
+                  <p class="bottom15">Team Operator : {{ rep_contact.email }} <span class="block"></span> </p>
                   <a class="pickus" href="mailto:{{ rep_contact.email }}" data-text="Send a Message">Send a Message</a>
                </div>
             </div>
@@ -241,7 +243,8 @@
             <script type="text/javascript">
             var date=new Date(),
               year = date.getFullYear(),
-              text = "All Rights Reserved. &copy; " + year + " DataBreak. Made by Lynn Hong",
+              text = "All Rights Reserved. &copy; " + year + " DataBreak. " +
+                  "Made by <a href='https://www.facebook.com/sulynhong' target='_blank' style='color: #00bcd4;'>Lynn Hong</a>",
               html = '<p class="copyrights wow fadeInUp" data-wow-delay="200ms">' + text + '</p>';
             document.write(html);
             </script>

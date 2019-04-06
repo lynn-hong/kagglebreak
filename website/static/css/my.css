@@ -1,11 +1,9 @@
 th, td {
     padding: 15px;
 }
-
 .competition_table{
     font-size: 18px;
 }
-
 .header-opacity:before{
     content: '';
     position: absolute;
@@ -14,4 +12,17 @@ th, td {
     left: 0;
     bottom: 0;
     background: rgba(0,0,0,0.5);
+}
+.mylist {
+    list-style: disc;
+    font-size: 14px;
+    padding: 0 25px;
+}
+.padding_short {
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
+}
+.title-h4 {
+    margin: 25px 0 15px 0;
+    font-weight: bold;
 }

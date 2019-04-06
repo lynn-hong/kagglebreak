@@ -1,0 +1,137 @@
+{% extends "website/base.html" %}
+{% load staticfiles %}
+
+{% block page_content %}
+
+<!--page Header-->
+<section class="page-header parallaxie padding_top center-block header-opacity"
+         style="padding-top: 4.5rem;
+                background: url({% static 'images/kagglebreak/sponsor_detail2.jpg' %}) no-repeat;
+                background-size: cover;">
+   <div class="container">
+      <div class="row">
+         <div class="col-sm-12">
+            <div class="page-titles text-center">
+               <h2 class="whitecolor font-light bottom30">Sponsor</h2>
+               <ul class="breadcrumb justify-content-center">
+                 <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                 <li class="breadcrumb-item active" aria-current="page">Sponsor</li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!--page Header ends-->
+
+<!-- Sponsorship guideline -->
+<section id="sponsorship" class="padding padding_short bglight">
+ <div class="container">
+    <div class="row">
+       <div class="col-md-8 offset-md-2 col-sm-12 text-center">
+          <div class="heading-title wow fadeInUp" data-wow-delay="150ms">
+             <span>데이터뽀개기의 활동에 도움을 주고 싶으신 분들은 언제든지 연락주세요!</span>
+             <h2 class="darkcolor bottom30">Sponsorship Guideline</h2>
+          </div>
+       </div>
+    </div>
+    <div class="row">
+       <div class="col-md-10 offset-md-1 col-sm-12 darkcolor wow fadeInUp" data-wow-delay="150ms">
+         <p>데이터뽀개기(DataBreak)는 데이터 분석에 관심 있는 분들을 위한 비영리 커뮤니티로
+            서포터즈를 포함한 모든 조직 운영 구성원들은 금전적 이득 없이 커뮤니티의 활성화를 위해 노력하고 있습니다.</p>
+         <p>주요 활동으로는 스터디 운영, 정기 Meetup, 대규모 행사 개최 등이 있으며
+            향후에는 멘토링이나 교육봉사 등 공익실현을 위한 활동들도 진행 할 예정입니다.</p>
+         <p>이러한 활동들이 원활하게 이루어질 수 있도록 형식의 제한을 두지 않고 후원을 모집하고 있습니다.</p>
+         <p>비영리단체이므로 후원에 대한 증빙은 가능하나 계산서 발급은 불가능하오니 양해 부탁드립니다!</p>
+          <p style="color: #00bcd4">후원문의: operator@databreak.org</p>
+       </div>
+    </div>
+ </div>
+</section>
+<!-- Competitions ends-->
+
+<section class="padding padding_short">
+ <div class="container">
+    <div class="row">
+       <div class="col-md-8 offset-md-2 col-sm-12 text-center">
+          <div class="heading-title wow fadeInUp" data-wow-delay="150ms">
+            <h3 class="darkcolor bottom30">1. 상시후원</h3>
+          </div>
+       </div>
+    </div>
+    <div class="row">
+       <div class="col-md-8 offset-md-2 col-sm-12 darkcolor wow fadeInUp" data-wow-delay="150ms">
+          <p>상시후원은 데이터뽀개기가 지속 가능한 커뮤니티가 될 수 있도록 운영 활동에 쓰이는 후원입니다.</p>
+          <h4 class="title-h4">정기 모임 현황(19.3.31 기준)</h4>
+          <ul class="mylist">
+             <li>전체 운영진 월례회의(매월 마지막주 금)</li>
+             <li>운영 팀별 월례회의(매월 2주차 중)</li>
+             <li>NLP 뽀개기(매주 토)</li>
+             <li>Money 뽀개기(매주 토)</li>
+             <li>PRML 스터디(매주 월)</li>
+          </ul>
+
+          <h4 class="title-h4">후원 가능 항목</h4>
+          <ul class="mylist">
+             <li>스터디, Meetup 진행을 위한 장소</li>
+             <li>다과/식사</li>
+             <li>스터디 도서</li>
+             <li>기프티콘 등</li>
+          </ul>
+
+          <h4 class="title-h4">후원 시 혜택</h4>
+          <ul class="mylist">
+             <li>데이터뽀개기 공식 홈페이지에 상시 로고 또는 이름 노출</li>
+             <li>커뮤니티 주최 행사 티켓 제공</li>
+             <li>송년회 등 다양한 특별 행사 초청</li>
+          </ul>
+
+       </div>
+    </div>
+ </div>
+</section>
+
+<section class="padding bglight padding_short">
+ <div class="container">
+    <div class="row">
+       <div class="col-md-8 offset-md-2 col-sm-12 text-center">
+          <div class="heading-title wow fadeInUp" data-wow-delay="150ms">
+            <h3 class="darkcolor bottom30">2. 행사후원</h3>
+          </div>
+       </div>
+    </div>
+    <div class="row">
+       <div class="col-md-8 offset-md-2 col-sm-12 darkcolor wow fadeInUp" data-wow-delay="150ms">
+          <p>행사후원은 데이터뽀개기를 통해 더욱 많은 분들이 정보를 공유할 수 있도록 각종 행사 활동에 쓰이는 후원입니다.</p>
+          <p>후원사 혜택은 후원 규모에 따라 차등적으로 부여 됩니다. 구체적인 등급 기준은 추후 업데이트 예정입니다.</p>
+          <h4 class="title-h4">2019년 예정 행사</h4>
+          <ul class="mylist">
+             <li>Kaggle Days (4월)</li>
+             <li>Data Break 컨퍼런스(10월 예정)</li>
+          </ul>
+
+          <h4 class="title-h4">후원 가능 항목</h4>
+          <ul class="mylist">
+             <li>현금(사용 내역은 사후에 후원사에 한해 공개)</li>
+             <li>행사 규모에 맞는 장소 제공</li>
+             <li>경품, 기념품(로고 삽입 가능)</li>
+             <li>서포터즈(사진/동영상 촬영, 행사홍보, 디자인)</li>
+             <li>다과/식사</li>
+             <li>현수막</li>
+          </ul>
+
+          <h4 class="title-h4">후원 시 혜택</h4>
+          <ul class="mylist">
+             <li>(공통) 1. 데이터뽀개기 홈페이지에 배너 게시 2. 워크샵(각종 행사) 티켓 제공(행사 규모를 고려하여 배부되므로 수량은 제한적일 수 있습니다.)</li>
+             <li>(행사후원) 1. 현장 홍보물 비치: 포스터, 리플렛 2. 후원사 발표 세션(발표 주제 사전 협의)</li>
+             <li>(상시후원) 1. 운영 관련 현황 게시물에 후원 내용 명시</li>
+          </ul>
+       </div>
+    </div>
+ </div>
+</section>
+
+
+
+
+{% endblock %}

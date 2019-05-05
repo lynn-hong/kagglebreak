@@ -4,7 +4,7 @@
 <head>
 <!-- Required meta tags -->
 <meta charset="utf-8">
-<meta property="og:image" content="{% static 'images/2019_kaggledays_meetup/kaggledays_홈페이지용.png' %}">
+<meta property="og:image" content="{% static 'images/meetup/meetup_thumbnail.jpg' %}">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>DataBreak</title>
 <link href="{% static 'images/favicon_d.ico' %}" rel="icon">
@@ -74,6 +74,11 @@
                   <a class="nav-link" href="{% url 'activity' %}">Activities</a>
                </li>
                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'meetup' %}">Meetup
+                     <i class="fa fa-exclamation" aria-hidden="true" style="color: yellow;"></i>
+                  </a>
+               </li>
+               <li class="nav-item">
                   <a class="nav-link" href="{% url 'archive' %}">Archive</a>
                </li>
                <li class="nav-item">
@@ -110,6 +115,11 @@
                </li>
                <li class="nav-item">
                   <a class="nav-link" href="{% url 'activity' %}">Activities</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="{% url 'meetup' %}">Meetup
+                     <i class="fa fa-exclamation" aria-hidden="true" style="color: yellow;"></i>
+                  </a>
                </li>
                <li class="nav-item">
                   <a class="nav-link" href="{% url 'archive' %}">Archive</a>

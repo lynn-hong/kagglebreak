@@ -1,5 +1,17 @@
+table {
+    width: 100%;
+    text-align: center;
+}
 th, td {
-    padding: 15px;
+    padding: 10px;
+    border: 1px solid lightgray;
+}
+th {
+    background-color: darkslateblue;
+    color: whitesmoke;
+}
+td {
+    color: black;
 }
 .competition_table{
     font-size: 18px;
@@ -18,11 +30,31 @@ th, td {
     font-size: 14px;
     padding: 0 25px;
 }
+.mylist2 {
+    padding: 0 25px;
+}
 .padding_short {
     padding-top: 4.5rem;
     padding-bottom: 4.5rem;
 }
 .title-h4 {
     margin: 25px 0 15px 0;
+    font-weight: bold;
+}
+.map-responsive{
+    overflow: hidden;
+    padding-bottom: 70%;
+    position: relative;
+    height: 0;
+}
+.map-responsive iframe{
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+span.blue{
+    color: #00bcd4;
     font-weight: bold;
 }

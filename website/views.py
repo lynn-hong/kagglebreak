@@ -7,7 +7,7 @@ from django.shortcuts import render, get_object_or_404
 from django.template import RequestContext
 from .models import Activity, ActivityKeyword, ActivityLeader, ActivitySponsor, Attendance, Contact, \
     Event, EventPicture, Keyword, Material, Member, Presentation, Home, About, Coc, ActivityNotification,\
-    Competition
+    Competition, EventSponsor, EventUrl, EventKeyword
 
 # Databreak2018
 ROOM = {'A': 1, 'B': 2, 'C': 3, 'Hall': 4}
@@ -26,7 +26,7 @@ STAFF_TYPES = {2: {'name': 'Creator', 'desc': '데이터 관련 유용한 컨텐
 
 def get_rep_contact():
     c_dict = dict()
-    for c in Contact.objects.all().filter(m__name="캐글뽀개기"):
+    for c in Contact.objects.all().filter(m__name="데이터뽀개기"):
         c_dict[c.get_contact_type_display().lower()] = c.info
     return c_dict
 
@@ -68,8 +68,8 @@ def get_schedule():
         pt_dict = dict()
         pt_dict['roomId'] = ROOM[pt.specific_location.strip('+')]
         pt_dict['text'] = pt.title
-        pt_dict['speaker'] = "" if pt.m.name == "캐글뽀개기" else pt.m.name
-        pt_dict['managing'] = True if pt.m.name == "캐글뽀개기" else False
+        pt_dict['speaker'] = "" if pt.m.name == "데이터뽀개기" else pt.m.name
+        pt_dict['managing'] = True if pt.m.name == "데이터뽀개기" else False
         pt_dict['startDate'] = datetime.combine(date(2018, 10, 7), pt.s_time).strftime("%Y-%m-%d %H:%M:%S")
         pt_dict['endDate'] = datetime.combine(date(2018, 10, 7), pt.e_time).strftime("%Y-%m-%d %H:%M:%S")
         pt_dict['isFull'] = True if pt.specific_location.endswith('+') else False
@@ -218,6 +218,19 @@ class IndexSponsor(TemplateView):
         context['rep_contact'] = get_rep_contact()
         return context
 
+class IndexMeetup(TemplateView):
+    template_name = 'website/meetup_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(IndexMeetup, self).get_context_data(**kwargs)
+        context['meetups'] = Event.objects.all().filter(a_id=10).order_by('-s_datetime')  # filtering meetup
+        for meetup in context['meetups']:
+            meetup.keyword = EventKeyword.objects.all().filter(event_id=meetup.id).filter(is_main=True)[0]
+        context['apply_speech'] = EventUrl.objects.all().filter(e__a_id=10).filter(url_type=1).order_by('-e__s_datetime')[0]
+        context['sponsors'] = get_default_sponsor()
+        context['rep_contact'] = get_rep_contact()
+        return context
+
 def each_activity(request, a_id):
     context = dict()
     activity = get_object_or_404(Activity, pk=a_id)
@@ -233,7 +246,42 @@ def each_activity(request, a_id):
     context['events'] = Event.objects.all().filter(a_id=a_id)
     return render(request, 'website/activity_each.html', context)
 
-
+def each_meetup(request, e_id):
+    context = dict()
+    event = get_object_or_404(Event, pk=e_id, a=10)
+    # default information
+    event.pts = []
+    for p in Presentation.objects.all().filter(e_id=e_id).order_by('s_time'):
+        material = Material.objects.all().filter(p=p.id)
+        if len(material) < 1:
+            material = False
+        else:
+            material = material[0]
+        event.pts.append({'pt': p, 'material': material})
+    # event picture
+    context['pic'] = EventPicture.objects.all().filter(e_id=e_id)
+    if len(context['pic']) < 1:
+        context['pic'] = False
+    else:
+        context['pic'] = context['pic'][0]
+    # urls
+    context['urls'] = EventUrl.objects.all().filter(e_id=e_id)
+    # date and time
+    if event.s_datetime > datetime(9999,1,1):
+        event.s_datetime = '날짜 미정'
+    # description
+    event.e_desc_kor = [x.split("\r\n") for x in event.e_desc_kor.split("\r\n\r\n")]
+    # keywords
+    context['keywords'] = EventKeyword.objects.all().filter(event=e_id).order_by('?')
+    # event sponsor
+    context['event_sponsors'] = EventSponsor.objects.all().filter(e=e_id).order_by('order_number')
+    for es in context['event_sponsors']:
+        url = Contact.objects.values('info').filter(m__id=es.s.id).filter(contact_type=8)[0]  # website
+        es.url = url
+    context['event'] = event
+    context['rep_contact'] = get_rep_contact()
+    context['sponsors'] = get_default_sponsor()
+    return render(request, 'website/meetup_each.html', context)
 
 
 

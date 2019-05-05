@@ -1,0 +1,191 @@
+{% extends "website/base.html" %}
+{% load staticfiles %}
+
+{% block page_content %}
+
+<script>
+   // http://stackoverflow.com/questions/37684/how-to-replace-plain-urls-with-links
+   function replaceURLWithHTMLLinks(text) {
+       var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+       return text.replace(exp,"<a href='$1' style='color: #007bff' target='_blank'>$1</a>");
+   }
+
+   window.onload = function(){
+     var elm =  document.getElementById("info");
+     var modifiedHtml = replaceURLWithHTMLLinks(elm.innerHTML);
+     elm.innerHTML = modifiedHtml ;
+   }
+</script>
+
+<!--page Header-->
+<section class="page-header parallaxie padding_top center-block header-opacity"
+         style="padding-top: 4.5rem;
+                background: url({% static 'images/kagglebreak/meetup_detail2.jpg' %}) no-repeat;
+                background-size: cover;">
+   <div class="container">
+      <div class="row">
+         <div class="col-sm-12">
+            <div class="page-titles text-center">
+               <h2 class="whitecolor font-light bottom30">{{ event.e_title_kor }}</h2>
+               <ul class="breadcrumb justify-content-center">
+                 <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                 <li class="breadcrumb-item"><a href="{% url 'meetup' %}">Meetup</a></li>
+                 <li class="breadcrumb-item active" aria-current="page">{{ event.e_title_kor }}</li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!--page Header ends-->
+
+<!-- Our Blogs -->  
+<section id="our-blog" class="padding bglight">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-8">
+            <div class="news_item shadow">
+               <div class="image">
+                  {% if not pic.pic_link %}
+                     <img src="{% static 'images/blog-measonry1.jpg' %}" class="img-responsive">
+                  {% else %}
+                     {% with pic.pic_link as image_static %}
+                        <img src="{% static image_static %}" class="img-responsive">
+                     {% endwith %}
+                  {% endif %}
+               </div>
+               <div class="news_desc text-left">
+                  <h3 class="text-capitalize font-light darkcolor"><a href="#">
+                     {{ event.e_title_kor }}</a></h3>
+                  <ul class="meta-tags top20 bottom20">
+                     <li><a href="#" style="font-size: 20px;"><i class="fa fa-calendar"></i>
+                        {{ event.s_datetime }}
+                     </a></li>
+                  </ul>
+                  {% if event.welcome_message != none %}
+                     <blockquote class="blockquote darkcolor heading_space">
+                        {{ event.welcome_message }}
+                     </blockquote>
+                  {% endif %}
+
+                  {% if event.pts|length > 0 %}
+                     <h4 class="text-capitalize font-light darkcolor bottom20">Schedule(발표자료 다운로드)</h4>
+                     <ul class="rounded heading_space">
+                        {% for each_pt in event.pts %}
+                        <li>{{ each_pt.pt.s_time }}~{{ each_pt.pt.e_time }} :
+                           {% if not each_pt.material %}
+                              {{ each_pt.pt.title }}
+                           {% else %}
+                              <a href={{ each_pt.material.material_link }} target="_blank" style="color: #00bcd4">
+                                 {{ each_pt.pt.title }}
+                              </a>
+                              {% if each_pt.pt.m.name != "데이터뽀개기" %}
+                                 {% if each_pt.pt.m.category == 1 %}
+                                    ({{ each_pt.pt.m.name }})
+                                 {% else %}
+                                    ({{ each_pt.pt.m.name }}님)
+                                 {% endif %}
+                              {% endif %}
+                           {% endif %}
+                        </li>
+                        {% endfor %}
+                     </ul>
+                  {% endif %}
+
+                  <div id="info">
+                  {% for paragraph in event.e_desc_kor %}
+                     {% for line in paragraph %}
+                        <p style="margin-bottom: 0;">{{ line }}</p>
+                     {% endfor %}
+                     <br />
+                  {% endfor %}
+                  </div>
+
+                  <!--
+                  <div class="profile-authors heading_space">
+                     <h4 class="text-capitalize darkcolor bottom40">Testimonial</h4>
+                     <div class="eny_profile bottom30">
+                        <div class="profile_photo"><img src="{% static 'images/testimonial-1.jpg' %}" alt="Comments"> </div>
+                        <div class="profile_text">
+                           <h6 class="darkcolor"><a href="#.">Jenifer Lawrence</a></h6>
+                           <p class="top10">Podcasting operational change management inside of workflows to establish a framework. Taking seamless key performance indicators offline to maximise.</p>
+                        </div>
+                     </div>
+                     <div class="eny_profile">
+                        <div class="profile_photo"><img src="{% static 'images/testimonial-2.jpg' %}" alt="Comments"> </div>
+                        <div class="profile_text">
+                           <h6 class="darkcolor"><a href="#.">Jkristen Smith</a></h6>
+                           <p class="top10">Keeping your eye on the ball while performing. Podcasting operational change management inside of workflows to establish a framework. </p>
+                        </div>
+                     </div>
+                  </div> -->
+
+               </div>
+            </div>
+         </div>
+         <div class="col-md-4">
+            <aside class="sidebar whitebox">
+               <div class="widget heading_space">
+                  <h4 class="darkcolor bottom20">
+                     <i class="fa fa-map-marker" aria-hidden="true"></i> {{ event.location }}
+                  </h4>
+                  {% if event.location_map != "" %}
+                     <div class="map-responsive">
+                        {% autoescape off %}{{ event.location_map }}{% endautoescape %}
+                     </div>
+                  {% endif %}
+               </div>
+               <div class="widget heading_space">
+                  <h4 class="text-capitalize darkcolor bottom20">
+                     <i class="fa fa-external-link" aria-hidden="true"></i> Registration
+                  </h4>
+                  {% if urls.count < 1 %}
+                     <div class="single_post bottom15">
+                        <div class="text darkcolor">등록 오픈 전입니다</div>
+                     </div>
+                  {% else %}
+                     {% for url in urls %}
+                        <div class="single_post bottom15">
+                           <div class="text darkcolor">
+                              <a href={{ url.url }} target="_blank" style="color: #00bcd4">{{ url.url_desc }}</a>
+                           </div>
+                        </div>
+                     {% endfor %}
+                  {% endif %}
+               </div>
+               <div class="widget heading_space">
+                  <h4 class="text-capitalize darkcolor bottom20">
+                      <i class="fa fa-hashtag" aria-hidden="true"></i> Keywords
+                  </h4>
+                  <ul class="webtags">
+                     {% for keyword in keywords %}
+                        <li><a href="#">{{ keyword.k }}</a></li>
+                     {% endfor %}
+                  </ul>
+               </div>
+               <div class="widget heading_space">
+                  <h4 class="text-capitalize darkcolor bottom20">
+                     <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Sponsor
+                  </h4>
+                  {% for sponsor in event_sponsors %}
+                  <div class="single_post bottom15">
+                     <a href={{ sponsor.url.info }} class="post" style="height: 100%;">
+                        {% with sponsor.s.picture as sponsor_image_static %}
+                           <img src="{% static sponsor_image_static %}" alt="sponsor image" style="border-radius: 0;">
+                        {% endwith %}
+                     </a>
+                     <div class="text">
+                        <a href={{ sponsor.url.info }}>{{ sponsor.s.name }}</a>
+                        <span>{{ sponsor.spon_type }}</span>
+                     </div>
+                  </div>
+                  {% endfor %}
+               </div>
+            </aside>
+         </div>
+      </div>
+   </div>
+</section>
+<!--Our Blogs Ends-->
+                        
+{% endblock %}

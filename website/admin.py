@@ -1,9 +1,9 @@
-from django.forms import TextInput, Textarea
+from django.forms import TextInput, Textarea, widgets, ModelChoiceField
 from django.db import models
 from django.contrib import admin
 from .models import Activity, ActivityKeyword, ActivityLeader, ActivitySponsor, Attendance, Contact, \
     Event, EventPicture, Keyword, Material, Member, Presentation, Home, About, Coc, ActivityNotification,\
-    Competition
+    Competition, EventSponsor, EventUrl, EventKeyword
 
 textinput_width = '100'
 
@@ -71,13 +71,32 @@ class EventAdmin(admin.ModelAdmin):
     list_display = ['id', 'a', 's_datetime', 'e_datetime', 'location', 'e_title_kor', 'e_title_eng',
                     'e_desc_kor', 'e_desc_eng', 'url']
     list_display_links = ['a']
+    list_filter = ['a']
+    search_fields = ['a', 'location', 'e_title_kor', 'e_desc_kor']
     formfield_overrides = {
         models.CharField: {'widget': TextInput(attrs={'size': textinput_width})},
     }
 
+@admin.register(EventKeyword)
+class EventKeywordAdmin(admin.ModelAdmin):
+    list_display = ['event', 'is_main', 'k']
+
 @admin.register(EventPicture)
 class EventPictureAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['e', 'pic_link']
+
+@admin.register(EventSponsor)
+class EventSponsorAdmin(admin.ModelAdmin):
+    list_display = ['id', 'e', 's', 'spon_level', 'spon_type', 'order_number']
+    list_display_links = ['s']
+    ordering = ['spon_level', 'order_number']
+    formfield_overrides = {
+        models.CharField: {'widget': TextInput(attrs={'size': textinput_width})},
+    }
+
+@admin.register(EventUrl)
+class EventUrlAdmin(admin.ModelAdmin):
+    list_display = ['e', 'url_type', 'url_desc', 'url']
 
 @admin.register(Keyword)
 class KeywordAdmin(admin.ModelAdmin):
@@ -87,6 +106,9 @@ class KeywordAdmin(admin.ModelAdmin):
 @admin.register(Material)
 class MaterialAdmin(admin.ModelAdmin):
     list_display = ['p', 'material_link']
+    formfield_overrides = {
+        ModelChoiceField: {'widget': widgets.Select(attrs={'size': textinput_width})},
+    }
 
 @admin.register(Member)
 class MemberAdmin(admin.ModelAdmin):

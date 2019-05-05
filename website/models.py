@@ -98,6 +98,13 @@ SPON_LEVEL = (
     (5, 'Personal'),
 )
 
+URL_TYPE = (
+    (0, 'register'),
+    (1, 'apply_speech'),
+    (2, 'review'),
+    (3, 'picture'),
+)
+
 class Home(models.Model):
     order = models.IntegerField(default=None)
     top = models.CharField(max_length=255, blank=True, null=True)
@@ -228,6 +235,8 @@ class Event(models.Model):
     e_desc_kor = models.TextField(blank=True, null=True)
     e_desc_eng = models.TextField(blank=True, null=True)
     url = models.TextField(blank=True, null=True)
+    location_map = models.TextField(blank=True, null=True)
+    welcome_message = models.TextField(blank=True, null=True)
 
     class Meta:
         managed = True
@@ -237,13 +246,55 @@ class Event(models.Model):
         return self.e_title_kor
 
 
+class EventKeyword(models.Model):
+    event = models.ForeignKey('Event', on_delete=models.PROTECT)
+    is_main = models.NullBooleanField(default=False)
+    k = models.ForeignKey('Keyword', on_delete=models.PROTECT)
+
+    class Meta:
+        managed = True
+        db_table = 'EVENT_KEYWORD'
+
+    def __str__(self):
+        return '{} - {}'.format(self.event, self.k)
+
+
 class EventPicture(models.Model):
     e = models.ForeignKey(Event, on_delete=models.PROTECT)
-    pic_link = models.CharField(max_length=45)
+    pic_link = models.TextField(default=None)
 
     class Meta:
         managed = True
         db_table = 'EVENT_PICTURE'
+
+
+class EventSponsor(models.Model):
+    e = models.ForeignKey(Event, on_delete=models.PROTECT)
+    s = models.ForeignKey('Member', on_delete=models.PROTECT)
+    spon_type = models.CharField(max_length=45, blank=True, null=True)
+    spon_level = models.IntegerField(choices=SPON_LEVEL, default=0)
+    order_number = models.IntegerField(default=0)
+
+    class Meta:
+        managed = True
+        db_table = 'EVENT_SPONSOR'
+
+    def __str__(self):
+        return "{} - {}".format(self.e.a, self.e)
+
+
+class EventUrl(models.Model):
+    e = models.ForeignKey(Event, on_delete=models.PROTECT)
+    url_type = models.IntegerField(choices=URL_TYPE, default=0)
+    url_desc = models.CharField(max_length=60, default=None)
+    url = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'EVENT_URL'
+
+    def __str__(self):
+        return "{} - {}".format(self.url_type, self.url)
 
 
 class Keyword(models.Model):
@@ -259,11 +310,14 @@ class Keyword(models.Model):
 
 class Material(models.Model):
     p = models.ForeignKey('Presentation', on_delete=models.PROTECT)
-    material_link = models.CharField(max_length=500)
+    material_link = models.TextField(default=None)
 
     class Meta:
         managed = True
         db_table = 'MATERIAL'
+
+    def __str__(self):
+        return "{} 발표자료".format(self.p)
 
 
 class Member(models.Model):
@@ -275,7 +329,7 @@ class Member(models.Model):
     nickname_eng = models.CharField(max_length=45)
     affiliation = models.CharField(max_length=45, blank=True, null=True)
     interest = models.CharField(max_length=255, blank=True, null=True)
-    introduction = models.CharField(max_length=355, blank=True, null=True)
+    introduction = models.TextField(blank=True, null=True)
     picture = models.CharField(max_length=225, blank=True, null=True)
 
     class Meta:

@@ -3,9 +3,17 @@ from django.db import models
 from django.contrib import admin
 from .models import Activity, ActivityKeyword, ActivityLeader, ActivitySponsor, Attendance, Contact, \
     Event, EventPicture, Keyword, Material, Member, Presentation, Home, About, Coc, ActivityNotification,\
-    Competition, EventSponsor, EventUrl, EventKeyword
+    Competition, EventSponsor, EventUrl, EventKeyword, Operation
 
 textinput_width = '100'
+
+@admin.register(Operation)
+class OperationAdmin(admin.ModelAdmin):
+    list_display = ['type_name', 'key', 'value', 'value2']
+    list_display_links = ['key']
+    formfield_overrides = {
+        models.CharField: {'widget': TextInput(attrs={'size': textinput_width})},
+    }
 
 @admin.register(Activity)
 class ActivityAdmin(admin.ModelAdmin):

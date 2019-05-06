@@ -105,6 +105,23 @@ URL_TYPE = (
     (3, 'picture'),
 )
 
+OPERATION_TYPE_NAME = (
+    (0, 'Page info'),
+    (1, 'COC'),
+    (2, 'About'),
+    (3, 'Notification'),
+)
+
+class Operation(models.Model):
+    type_name = models.IntegerField(choices=OPERATION_TYPE_NAME, default=0)
+    key = models.CharField(max_length=100)
+    value = models.TextField(blank=True, null=True)
+    value2 = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'OPERATION'
+
 class Home(models.Model):
     order = models.IntegerField(default=None)
     top = models.CharField(max_length=255, blank=True, null=True)

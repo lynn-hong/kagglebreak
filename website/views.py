@@ -7,7 +7,7 @@ from django.shortcuts import render, get_object_or_404
 from django.template import RequestContext
 from .models import Activity, ActivityKeyword, ActivityLeader, ActivitySponsor, Attendance, Contact, \
     Event, EventPicture, Keyword, Material, Member, Presentation, Home, About, Coc, ActivityNotification,\
-    Competition, EventSponsor, EventUrl, EventKeyword
+    Competition, EventSponsor, EventUrl, EventKeyword, Operation
 
 # Databreak2018
 ROOM = {'A': 1, 'B': 2, 'C': 3, 'Hall': 4}
@@ -109,6 +109,9 @@ def get_manager():
         m['staff_type'] = STAFF_TYPES[m['staff_type']]['name']  # title of team
     return managers
 
+def get_page_info(name):
+    return Operation.objects.filter(type_name=0).filter(key=name).values('value', 'value2')[0]
+
 
 class Index(TemplateView):
     template_name = 'website/index.html'
@@ -120,6 +123,7 @@ class Index(TemplateView):
         context['about'] = About.objects.first()
         context['rep_contact'] = get_rep_contact()
         context['sponsors'] = get_default_sponsor()
+        context['page_info'] = get_page_info('index')
         return context
 
 class IndexAbout(TemplateView):
@@ -130,6 +134,7 @@ class IndexAbout(TemplateView):
         context['coc_lefts'], context['coc_rights'] = get_coc()
         context['sponsors'] = get_default_sponsor()
         context['rep_contact'] = get_rep_contact()
+        context['page_info'] = get_page_info('about')
         return context
 
 class IndexPeople(TemplateView):
@@ -141,6 +146,7 @@ class IndexPeople(TemplateView):
         context['managers'] = get_manager()
         context['sponsors'] = get_default_sponsor()
         context['rep_contact'] = get_rep_contact()
+        context['page_info'] = get_page_info('people')
         return context
 
 class IndexActivity(TemplateView):
@@ -196,6 +202,7 @@ class IndexActivity(TemplateView):
         context['rep_contact'] = get_rep_contact()
         context['events'] = self.get_event()
         context['activity_types'] = self.get_activities()
+        context['page_info'] = get_page_info('activity')
         return context
 
 class IndexArchive(TemplateView):
@@ -206,6 +213,7 @@ class IndexArchive(TemplateView):
         context['competitions'] = Competition.objects.all()
         context['sponsors'] = get_default_sponsor()
         context['rep_contact'] = get_rep_contact()
+        context['page_info'] = get_page_info('archive')
         return context
 
 class IndexSponsor(TemplateView):
@@ -216,6 +224,7 @@ class IndexSponsor(TemplateView):
         context['competitions'] = Competition.objects.all()
         context['sponsors'] = get_default_sponsor()
         context['rep_contact'] = get_rep_contact()
+        context['page_info'] = get_page_info('sponsor')
         return context
 
 class IndexMeetup(TemplateView):
@@ -229,6 +238,7 @@ class IndexMeetup(TemplateView):
         context['apply_speech'] = EventUrl.objects.all().filter(e__a_id=10).filter(url_type=1).order_by('-e__s_datetime')[0]
         context['sponsors'] = get_default_sponsor()
         context['rep_contact'] = get_rep_contact()
+        context['page_info'] = get_page_info('meetup')
         return context
 
 def each_activity(request, a_id):
@@ -244,6 +254,7 @@ def each_activity(request, a_id):
     context['rep_contact'] = get_rep_contact()
     context['sponsors'] = get_default_sponsor()
     context['events'] = Event.objects.all().filter(a_id=a_id)
+    context['page_info'] = get_page_info('activity_each')
     return render(request, 'website/activity_each.html', context)
 
 def each_meetup(request, e_id):
@@ -281,6 +292,7 @@ def each_meetup(request, e_id):
     context['event'] = event
     context['rep_contact'] = get_rep_contact()
     context['sponsors'] = get_default_sponsor()
+    context['page_info'] = get_page_info('meetup_each')
     return render(request, 'website/meetup_each.html', context)
 
 

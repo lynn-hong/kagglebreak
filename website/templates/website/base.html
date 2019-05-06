@@ -4,9 +4,11 @@
 <head>
 <!-- Required meta tags -->
 <meta charset="utf-8">
-<meta property="og:image" content="{% static 'images/meetup/meetup_thumbnail.jpg' %}">
+{% with page_info.value2 as thumbnail_image_static %}
+   <meta property="og:image" content="{% static thumbnail_image_static %}">
+{% endwith %}
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>DataBreak</title>
+<title>{{ page_info.value }}</title>
 <link href="{% static 'images/favicon_d.ico' %}" rel="icon">
 
 <!--Plugins css-->

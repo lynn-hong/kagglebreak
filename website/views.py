@@ -263,12 +263,13 @@ def each_meetup(request, e_id):
     # default information
     event.pts = []
     for p in Presentation.objects.all().filter(e_id=e_id).order_by('s_time'):
-        material = Material.objects.all().filter(p=p.id)
+        material = Material.objects.all().filter(p=p.id).filter(material_type=0)
+        video = Material.objects.all().filter(p=p.id).filter(material_type=1)
         if len(material) < 1:
             material = False
         else:
             material = material[0]
-        event.pts.append({'pt': p, 'material': material})
+        event.pts.append({'pt': p, 'material': material, 'video': video})
     # event picture
     context['pic'] = EventPicture.objects.all().filter(e_id=e_id)
     if len(context['pic']) < 1:
@@ -276,7 +277,7 @@ def each_meetup(request, e_id):
     else:
         context['pic'] = context['pic'][0]
     # urls
-    context['urls'] = EventUrl.objects.all().filter(e_id=e_id)
+    context['urls'] = EventUrl.objects.all().filter(e_id=e_id).filter(url_type=0)
     # date and time
     if event.s_datetime > datetime(9999,1,1):
         event.s_datetime = '날짜 미정'
@@ -293,6 +294,8 @@ def each_meetup(request, e_id):
     context['rep_contact'] = get_rep_contact()
     context['sponsors'] = get_default_sponsor()
     context['page_info'] = get_page_info('meetup_each')
+    if not context['pic'] is False:
+        context['page_info']['value2'] = context['pic'].pic_link
     return render(request, 'website/meetup_each.html', context)
 
 

@@ -112,6 +112,11 @@ OPERATION_TYPE_NAME = (
     (3, 'Notification'),
 )
 
+MATERIAL_TYPE = (
+    (0, 'document'),
+    (1, 'video'),
+)
+
 class Operation(models.Model):
     type_name = models.IntegerField(choices=OPERATION_TYPE_NAME, default=0)
     key = models.CharField(max_length=100)
@@ -327,6 +332,7 @@ class Keyword(models.Model):
 
 class Material(models.Model):
     p = models.ForeignKey('Presentation', on_delete=models.PROTECT)
+    material_type = models.IntegerField(choices=MATERIAL_TYPE, default=0)
     material_link = models.TextField(default=None)
 
     class Meta:

@@ -47,7 +47,7 @@
             <div class="news_item shadow">
                <div class="image">
                   {% if not pic.pic_link %}
-                     <img src="{% static 'images/blog-measonry1.jpg' %}" class="img-responsive">
+                     <img src="{% static 'images/thumbnail/meetup_v2.0.png' %}" class="img-responsive">
                   {% else %}
                      {% with pic.pic_link as image_static %}
                         <img src="{% static image_static %}" class="img-responsive">
@@ -69,7 +69,7 @@
                   {% endif %}
 
                   {% if event.pts|length > 0 %}
-                     <h4 class="text-capitalize font-light darkcolor bottom20">Schedule(발표자료 다운로드)</h4>
+                     <h4 class="text-capitalize font-light darkcolor bottom20">Schedule (행사 종료 후 발표자료 업로드)</h4>
                      <ul class="rounded heading_space">
                         {% for each_pt in event.pts %}
                         <li>{{ each_pt.pt.s_time }}~{{ each_pt.pt.e_time }} :
@@ -79,11 +79,23 @@
                               <a href={{ each_pt.material.material_link }} target="_blank" style="color: #00bcd4">
                                  {{ each_pt.pt.title }}
                               </a>
-                              {% if each_pt.pt.m.name != "데이터뽀개기" %}
-                                 {% if each_pt.pt.m.category == 1 %}
-                                    ({{ each_pt.pt.m.name }})
-                                 {% else %}
-                                    ({{ each_pt.pt.m.name }}님)
+                           {% endif %}
+                           {% if each_pt.pt.m.name != "데이터뽀개기" %}
+                              {% if each_pt.pt.m.category == 1 %}
+                                 - {{ each_pt.pt.m.name }}
+                                 {% if each_pt.video.count > 0 %}
+                                    <a href={{ each_pt.video.0.material_link }} target="_blank">
+                                       <i class="fa fa-youtube-play" aria-hidden="true"
+                                          style="color: red; font-size: 1.5rem;"></i>
+                                    </a>
+                                 {% endif %}
+                              {% else %}
+                                 - {{ each_pt.pt.m.name }}님({{ each_pt.pt.m.affiliation }})
+                                 {% if each_pt.video.count > 0 %}
+                                    <a href={{ each_pt.video.0.material_link }} target="_blank">
+                                       <i class="fa fa-youtube-play" aria-hidden="true"
+                                          style="color: red; font-size: 1.5rem;"></i>
+                                    </a>
                                  {% endif %}
                               {% endif %}
                            {% endif %}

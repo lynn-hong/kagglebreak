@@ -113,7 +113,7 @@ class KeywordAdmin(admin.ModelAdmin):
 
 @admin.register(Material)
 class MaterialAdmin(admin.ModelAdmin):
-    list_display = ['p', 'material_link']
+    list_display = ['p', 'material_type', 'material_link']
     formfield_overrides = {
         ModelChoiceField: {'widget': widgets.Select(attrs={'size': textinput_width})},
     }

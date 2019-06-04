@@ -91,7 +91,7 @@
                       {% if 'http' in manager.picture %}
                          <img src={{ manager.picture }} alt="{{ manager.name }}님의 사진">
                       {% else %}
-                         <img src="{% static 'images/manager/'|add:manager.picture %}" alt="{{ manager.name }}님의 사진">
+                         <img src="{% static manager.picture %}" alt="{{ manager.name }}님의 사진">
                       {% endif %}
                    </div>
                    <div class="team-content gradient_bg">

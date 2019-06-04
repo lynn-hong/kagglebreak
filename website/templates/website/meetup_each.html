@@ -182,7 +182,7 @@
                   {% for sponsor in event_sponsors %}
                   <div class="single_post bottom15">
                      <a href={{ sponsor.url.info }} class="post" style="height: 100%;">
-                        {% with sponsor.s.picture as sponsor_image_static %}
+                        {% with sponsor.s.picture.name as sponsor_image_static %}
                            <img src="{% static sponsor_image_static %}" alt="sponsor image" style="border-radius: 0;">
                         {% endwith %}
                      </a>

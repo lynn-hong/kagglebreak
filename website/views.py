@@ -288,8 +288,10 @@ def each_meetup(request, e_id):
     # event sponsor
     context['event_sponsors'] = EventSponsor.objects.all().filter(e=e_id).order_by('order_number')
     for es in context['event_sponsors']:
-        url = Contact.objects.values('info').filter(m__id=es.s.id).filter(contact_type=8)[0]  # website
-        es.url = url
+        try:
+            es.url = Contact.objects.values('info').filter(m__id=es.s.id).filter(contact_type=8)[0]  # website
+        except IndexError:
+            es.url = {'info': '/meetup/{}'.format(e_id)}
     context['event'] = event
     context['rep_contact'] = get_rep_contact()
     context['sponsors'] = get_default_sponsor()

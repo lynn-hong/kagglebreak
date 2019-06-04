@@ -8,6 +8,7 @@
 # Also note: You'll have to insert the output of 'django-admin sqlcustom [app_label]'
 # into your database.
 from __future__ import unicode_literals
+import os
 
 from django import utils
 from django.db import models
@@ -343,6 +344,12 @@ class Material(models.Model):
         return "{} 발표자료".format(self.p)
 
 
+def user_directory_path(instance, filename):
+    if instance.category == 0:  # person
+        return os.path.join('images', 'member', 'person', filename)
+    else:  # organization
+        return os.path.join('images', 'sponsor', filename)
+
 class Member(models.Model):
     category = models.IntegerField(choices=MEMBER_CATEGORY, default=None)
     type = models.IntegerField(choices=MEMBER_TYPE, default=1)
@@ -353,7 +360,7 @@ class Member(models.Model):
     affiliation = models.CharField(max_length=45, blank=True, null=True)
     interest = models.CharField(max_length=255, blank=True, null=True)
     introduction = models.TextField(blank=True, null=True)
-    picture = models.CharField(max_length=225, blank=True, null=True)
+    picture = models.ImageField(upload_to=user_directory_path, blank=True, null=True)
 
     class Meta:
         managed = True

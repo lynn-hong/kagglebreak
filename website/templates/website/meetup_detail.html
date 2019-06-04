@@ -69,19 +69,19 @@
        </div>
     </div>
     <div class="row">
-       <div class="col-md-12 col-sm-12 darkcolor wow fadeInUp" data-wow-delay="150ms">
+       <div class="col-md-12 col-sm-12 darkcolor wow fadeInUp" data-wow-delay="100ms">
           <p style="font-size: 1.1rem;">월 1회 오후 7시에 진행되는 'Data Playground at 7'은 데이터 기반의 업무 (기획, 분석, 엔지니어링) 분야에 종사하거나 공부하시는 많은 분들과 함께 만들어 갑니다.
              발표를 직접 신청해 주시거나 적절한 분들을 추천해 주세요. 진솔한 공유와 네트워킹을 통해 모두 함께 성장해요!</p>
           <h4 class="title-h4 wow fadeInUp" data-wow-delay="150ms">행사 설명</h4>
-           <ul class="rounded mylist2 wow fadeInUp" data-wow-delay="150ms">
+           <ul class="rounded mylist2 wow fadeInUp" data-wow-delay="200ms">
                <li>월 1회, <span class="blue">오후 7시에 시작</span>하여 네트워킹 시간 포함 10시에 종료합니다</li>
                 <li>데이터를 중요하게 생각하는 각기 다른 회사들과 월 별로 collaboration 합니다</li>
                 <li>매월 특정 데이터 형태 또는 현업 분야를 주제로 발표를 진행합니다. 주제는 후원사 또는 특정 사안에 따라 결정됩니다</li>
                <li><span class="blue">발표는 sponsor spot과 guest spot으로 구성</span>됩니다. sponsor spot은 해당 월의 후원사에서 데이터 관련 주제로 발표합니다</li>
                <li>guest spot은 50min. 발표 1인 또는 25min. 발표 2인으로 구성됩니다</li>
            </ul>
-          <h4 class="title-h4 wow fadeInUp" data-wow-delay="200ms">Guest spot 발표를 해 주신 분들께 드리는 선물</h4>
-           <ul class="rounded mylist2 wow fadeInUp" data-wow-delay="200ms">
+          <h4 class="title-h4 wow fadeInUp" data-wow-delay="250ms">Guest spot 발표를 해 주신 분들께 드리는 선물</h4>
+           <ul class="rounded mylist2 wow fadeInUp" data-wow-delay="300ms">
                 <li>소정의 발표료를 드립니다!</li>
                 <li>발표해 주신 해당월의 밋업 동반 1인 초대권</li>
                 <li>DataBreak 워크샵 티켓: 매년 가을에 진행되는 약 300명 규모의 종일 워크샵의 선착순 판매 티켓을 무료로 제공합니다</li>
@@ -108,18 +108,18 @@
     <div class="row">
        <div class="col-md-12 col-sm-12">
            {% for meetup in meetups %}
-           <h3 class="bottom10 top30 darkcolor wow fadeInLeft" data-wow-delay="100ms">
+           <h3 class="bottom10 top30 darkcolor wow fadeInLeft" data-wow-delay="50ms">
                {{ meetup.e_title_kor }}
            </h3>
-           <div class="bottom15 text-right wow fadeInRight" data-wow-delay="150ms">
+           <div class="bottom15 text-right wow fadeInRight" data-wow-delay="100ms">
                <a target="_blank" href="{% url 'each_meetup' e_id=meetup.id %}"
                    class="button btnprimary-alt wow fadeInUp" data-wow-delay="150ms"
                    style="padding: 0.7rem 1.5rem;">상세보기
                </a>
            </div>
-           <table id="competition_table" class="bottom30 wow fadeInUp" data-wow-delay="150ms">
+           <table id="competition_table" class="bottom30 wow fadeInUp" data-wow-delay="200ms">
              <tr>
-                <th style="width:30%;">Date&Time</th>
+                <th style="width:30%;">Date & Time</th>
                 <th style="width:40%;">Venue</th>
                 <th style="width:30%;">Keyword</th>
              </tr>
